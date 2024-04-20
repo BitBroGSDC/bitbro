@@ -17,13 +17,14 @@ class Course {
   List<Topic> topics;
   List<GameData> activeGames;
 
-  
+
 }
 
 List<Course> courses = [
   Course(
     title: 'Course 1',
     description: 'Description 1',
+    activeGames: games,
     topics: [
       Topic(
         title: 'Topic 1',
@@ -46,6 +47,7 @@ List<Course> courses = [
   Course(
     title: 'Course 2',
     description: 'Description 2',
+    activeGames: games,
     topics: [
       Topic(
         title: 'Topic 1',

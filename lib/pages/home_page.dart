@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                       CurrentDayQuestion(q: q),
                       const SizedBox(height: 24),
                       SummaryLastDay(q: q2),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       LearnSomething(
                         course: course,
                       ),
