@@ -1,8 +1,8 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 
 // TODO: rimuovere questo e aggiungere la vera implementazione di Diego
 class TempScore {
@@ -150,6 +150,17 @@ class Scoreboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title:
+            Text("Scoreboard", style: Theme.of(context).textTheme.titleLarge),
+        leading: IconButton(
+          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
+          onPressed: () {
+            context.go('/');
+          },
+        ),
+      ),
       backgroundColor: bluScuro,
       body: ListView.builder(
         itemCount: tempScores.length,
