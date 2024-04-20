@@ -1,3 +1,4 @@
+import 'package:bitbro/pages/games_page.dart';
 import 'package:bitbro/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,11 +17,18 @@ class BitBroApp extends StatelessWidget {
         path: '/',
         pageBuilder: (context, state) => CustomTransitionPage(
             child: const HomePage(title: 'Home Page'),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return child;
             }),
       ),
+      GoRoute(
+        path: '/games',
+        pageBuilder: (context, state) => CustomTransitionPage(
+            child: const GamesPage(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return child;
+            }),
+      )
     ],
   );
 
@@ -34,16 +42,14 @@ class BitBroApp extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           fontFamily: GoogleFonts.poppins().fontFamily,
           primarySwatch: Colors.blue,
-          primaryColor: const Color(0xFF00DDA3),
+          primaryColor: const Color(0xFF33404F),
           scaffoldBackgroundColor: Colors.grey[100],
           hoverColor: Colors.white.withOpacity(0.6),
           textTheme: const TextTheme(
-            titleMedium: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
-            bodySmall: TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w300),
-            bodyMedium: TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
+            titleLarge: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
+            titleMedium: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+            bodySmall: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w300),
+            bodyMedium: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
           )),
     );
   }
