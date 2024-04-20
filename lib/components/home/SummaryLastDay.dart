@@ -7,15 +7,15 @@ import 'package:go_router/go_router.dart';
 
 import '../../utils/styles.dart';
 
-class CurrentDayQuestion extends StatelessWidget {
-  const CurrentDayQuestion({super.key, this.q});
+class SummaryLastDay extends StatelessWidget {
+  const SummaryLastDay({super.key, this.q});
 
   final Question? q;
 
   @override
   Widget build(BuildContext context) {
     if (q == null) {
-      return const Text('No question for today');
+      return const SizedBox.shrink();
     }
 
     return Column(

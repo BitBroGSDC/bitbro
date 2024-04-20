@@ -13,9 +13,14 @@ const text14Bianco500 = TextStyle(
   color: bianco,
 );
 
-
 const text14BluScuro500 = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
+  color: bluScuro,
+);
+
+const text18Blue300 = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w300,
   color: bluScuro,
 );
