@@ -1,8 +1,6 @@
-import 'package:bitbro/classes/question.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../classes/courses/course.dart';
@@ -32,17 +30,37 @@ class LearnSomething extends StatelessWidget {
           style: text18Blue300,
         ),
         ListView.builder(
+          shrinkWrap: true,
           itemBuilder: (context, index) {
             Topic topic = course!.topics[index];
-            return Container(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(topic.title, style: text18Blue300),
-                    ],
-                  )
-                ],
+            return GestureDetector(
+              onTap: () {
+                GoRouter.of(context).push("/lesson");
+              },
+              child: Container(
+                margin: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(
+                    left: 16, right: 16, top: 10, bottom: 10),
+                decoration: BoxDecoration(
+                  color: bluScuro,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(topic.title, style: text18Bianco500),
+                        Text(
+                          topic.level,
+                          style: text14Green500,
+                        )
+                      ],
+                    ),
+                    Text(topic.description, style: text14Bianco300),
+                  ],
+                ),
               ),
             );
           },

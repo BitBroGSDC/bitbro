@@ -44,6 +44,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       currGame: currGame,
       selectedQuestion: selectedQuestion,
       questionOfLastDay: Nullable(questionOfLastDay),
+      currentCourse: currCourse
     ));
   }
 

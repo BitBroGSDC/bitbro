@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                             height: 28,
                             text: 'HISTORY',
                             onPressed: () {
-                              /* context.read().add(const ); */
+                              GoRouter.of(context).go('/history');
                             },
                             isExpandable: false,
                             suffix: Icons.arrow_forward,
