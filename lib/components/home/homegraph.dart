@@ -1,6 +1,7 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 class HomeGraphLegend extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class HomeGraphLegend extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             color: bluScuro,
             border: Border.all(color: color, width: 2)),
-        margin: const EdgeInsets.all(4),
+        margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
         padding: const EdgeInsets.fromLTRB(26, 4, 26, 4),
         child: Column(
           children: [
@@ -49,14 +50,17 @@ class HomeGraph extends StatelessWidget {
   final List<double> topData;
   final List<double> bottomData;
   final List<double> youData;
-  const HomeGraph(
-      {super.key,
-      required this.top,
-      required this.bottom,
-      required this.you,
-      required this.topData,
-      required this.bottomData,
-      required this.youData});
+  final Function? navigateToFullScoreboard;
+  const HomeGraph({
+    super.key,
+    required this.top,
+    required this.bottom,
+    required this.you,
+    required this.topData,
+    required this.bottomData,
+    required this.youData,
+    this.navigateToFullScoreboard,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -83,19 +87,36 @@ class HomeGraph extends StatelessWidget {
         .toList();
 
     return Column(children: [
+      const SizedBox(
+        width: 200,
+        height: 60,
+      ),
+      TextButton(
+          onPressed: () => {navigateToFullScoreboard!()},
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white.withAlpha(150),
+            backgroundColor: Theme.of(context).primaryColor,
+          ),
+          child: const Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacer(
+                flex: 1,
+              ),
+              Text('Full Scoreboard', style: TextStyle(fontSize: 16)),
+              Icon(
+                Ionicons.arrow_forward_outline,
+                size: 24,
+              ),
+            ],
+          )),
       SizedBox(
         height: 250,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: LineChart(LineChartData(
             titlesData: FlTitlesData(
-              bottomTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              rightTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              topTitles: AxisTitles(
+              bottomTitles: AxisTitles(
                 axisNameWidget: const Text(
                   'Day',
                   style: titleStyle,
@@ -106,6 +127,12 @@ class HomeGraph extends StatelessWidget {
                   getTitlesWidget: (value, meta) =>
                       Text(value.toString().split('.')[0], style: titleStyle),
                 ),
+              ),
+              rightTitles: const AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+              topTitles: const AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
               ),
               leftTitles: AxisTitles(
                 sideTitles: SideTitles(
@@ -174,7 +201,7 @@ class HomeGraph extends StatelessWidget {
           HomeGraphLegend(title: you, subtitle: "you", color: Colors.white),
           HomeGraphLegend(title: bottom, subtitle: "bottom", color: Colors.red),
         ],
-      )
+      ),
     ]);
   }
 }
