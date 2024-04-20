@@ -54,3 +54,10 @@ const text16Bianco500 = TextStyle(
   fontWeight: FontWeight.w500,
   color: bianco,
 );
+
+
+const text14Bianco300 = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w300,
+  color: bianco,
+);

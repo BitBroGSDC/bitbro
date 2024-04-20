@@ -1,8 +1,8 @@
-class Paragraph {
+class CustomParagraph {
   String? text;
   String? image;
 
-  Paragraph({
+  CustomParagraph({
     this.text,
     this.image,
   }) : assert(text != null || image != null);
