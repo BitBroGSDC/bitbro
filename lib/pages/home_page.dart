@@ -1,5 +1,8 @@
+import 'package:bitbro/bloc/app_bloc.dart';
+import 'package:bitbro/classes/question.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../components/home/CurrentDayQuestion.dart';
 
@@ -16,10 +19,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
     controller = DraggableScrollableController();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +44,22 @@ class _HomePageState extends State<HomePage> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: ListView(
-                controller: scrollController,
-                children: const <Widget>[
-                  SizedBox(height: 10),
-                  CurrentDayQuestion(),
-                  SizedBox(height: 10),
-                  /* SummaryLastDay(), */
-                  SizedBox(height: 10),
-                  /*  LearnSomething(), */
-                ],
+              child: BlocBuilder<AppBloc, AppState>(
+                builder: (context, state) {
+                  final Question? q = state.currDayData?.question;
+
+                  return ListView(
+                    controller: scrollController,
+                    children: <Widget>[
+                      const SizedBox(height: 10),
+                      CurrentDayQuestion(q: q),
+                      SizedBox(height: 10),
+                      /* SummaryLastDay(), */
+                      SizedBox(height: 10),
+                      /*  LearnSomething(), */
+                    ],
+                  );
+                },
               ),
             );
           },
