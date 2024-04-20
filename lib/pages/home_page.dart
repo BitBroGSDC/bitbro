@@ -6,8 +6,10 @@ import 'package:bitbro/bloc/app_bloc.dart';
 import 'package:bitbro/classes/question.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../classes/courses/course.dart';
 import '../components/home/CurrentDayQuestion.dart';
 import '../components/button.dart';
+import '../components/home/learn_something.dart';
 import '../components/home/summary_last_paragraph.dart';
 import '../utils/styles.dart';
 
@@ -65,6 +67,8 @@ class _HomePageState extends State<HomePage> {
 
                   final Question? q2 = state.questionOfLastDay;
 
+                  final Course? course = state.currentCourse;
+
                   return ListView(
                     controller: scrollController,
                     children: <Widget>[
@@ -91,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 24),
                       SummaryLastDay(q: q2),
                       SizedBox(height: 10),
-                      /*  LearnSomething(), */
+                      LearnSomething(
+                        course: course,
+                      ),
                     ],
                   );
                 },

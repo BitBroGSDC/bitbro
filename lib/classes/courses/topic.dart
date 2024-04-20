@@ -1,4 +1,4 @@
-import 'paragraph.dart';
+import 'custom_paragraph.dart';
 
 class Topic {
   Topic({
@@ -9,5 +9,5 @@ class Topic {
   String title;
   String description;
 
-  List<Paragraph> paragraphs;
+  List<CustomParagraph> paragraphs;
 }
