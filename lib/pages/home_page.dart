@@ -1,6 +1,7 @@
 import 'package:bitbro/components/home/homegraph.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../components/home/CurrentDayQuestion.dart';
 
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           bottomData: const [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
           youData: const [5, 6, 7, 8, 9, 10, 9, 8, 7, 6],
           navigateToFullScoreboard: () {
-            print("ciao");
+            context.go('/scoreboard');
           },
         ),
         DraggableScrollableSheet(
