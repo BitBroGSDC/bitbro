@@ -1,7 +1,6 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class HomeGraphLegend extends StatelessWidget {
   final String title;
@@ -87,111 +86,93 @@ class HomeGraph extends StatelessWidget {
         .toList();
 
     return Column(children: [
-      const SizedBox(
-        width: 200,
-        height: 60,
-      ),
-      TextButton(
-          onPressed: () => {navigateToFullScoreboard!()},
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white.withAlpha(150),
-            backgroundColor: Theme.of(context).primaryColor,
-          ),
-          child: const Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Spacer(
-                flex: 1,
-              ),
-              Text('Full Scoreboard', style: TextStyle(fontSize: 16)),
-              Icon(
-                Ionicons.arrow_forward_outline,
-                size: 24,
-              ),
-            ],
-          )),
       SizedBox(
         height: 250,
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: LineChart(LineChartData(
-            titlesData: FlTitlesData(
-              bottomTitles: AxisTitles(
-                axisNameWidget: const Text(
-                  'Day',
-                  style: titleStyle,
+        child: GestureDetector(
+          onTapUp: (det) => {navigateToFullScoreboard!()},
+          onTapCancel: () => {navigateToFullScoreboard!()},
+          behavior: HitTestBehavior.opaque,
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: LineChart(LineChartData(
+              titlesData: FlTitlesData(
+                bottomTitles: AxisTitles(
+                  axisNameWidget: const Text(
+                    'Day',
+                    style: titleStyle,
+                  ),
+                  axisNameSize: 24,
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    getTitlesWidget: (value, meta) =>
+                        Text(value.toString().split('.')[0], style: titleStyle),
+                  ),
                 ),
-                axisNameSize: 24,
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  getTitlesWidget: (value, meta) =>
-                      Text(value.toString().split('.')[0], style: titleStyle),
+                rightTitles: const AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                topTitles: const AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                leftTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    getTitlesWidget: (value, meta) =>
+                        Text(value.toString().split('.')[0], style: titleStyle),
+                  ),
                 ),
               ),
-              rightTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              topTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: false),
-              ),
-              leftTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  getTitlesWidget: (value, meta) =>
-                      Text(value.toString().split('.')[0], style: titleStyle),
+              borderData: FlBorderData(
+                show: true,
+                border: Border(
+                  bottom: BorderSide(
+                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+                      width: 4),
+                  left: const BorderSide(color: Colors.transparent),
+                  right: const BorderSide(color: Colors.transparent),
+                  top: const BorderSide(color: Colors.transparent),
                 ),
               ),
-            ),
-            borderData: FlBorderData(
-              show: true,
-              border: Border(
-                bottom: BorderSide(
-                    color: Theme.of(context).primaryColor.withOpacity(0.2),
-                    width: 4),
-                left: const BorderSide(color: Colors.transparent),
-                right: const BorderSide(color: Colors.transparent),
-                top: const BorderSide(color: Colors.transparent),
-              ),
-            ),
-            lineBarsData: [
-              LineChartBarData(
-                isCurved: true,
-                color: Colors.green,
-                barWidth: 4,
-                isStrokeCapRound: true,
-                dotData: const FlDotData(show: false),
-                belowBarData: BarAreaData(
-                  show: true,
-                  color: Colors.green.withOpacity(0.3),
+              lineBarsData: [
+                LineChartBarData(
+                  isCurved: true,
+                  color: Colors.green,
+                  barWidth: 4,
+                  isStrokeCapRound: true,
+                  dotData: const FlDotData(show: false),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    color: Colors.green.withOpacity(0.3),
+                  ),
+                  spots: topSpots,
                 ),
-                spots: topSpots,
-              ),
-              LineChartBarData(
-                isCurved: true,
-                color: Colors.white,
-                barWidth: 4,
-                isStrokeCapRound: true,
-                dotData: const FlDotData(show: false),
-                belowBarData: BarAreaData(
-                  show: true,
-                  color: Colors.white.withOpacity(0.3),
+                LineChartBarData(
+                  isCurved: true,
+                  color: Colors.white,
+                  barWidth: 4,
+                  isStrokeCapRound: true,
+                  dotData: const FlDotData(show: false),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    color: Colors.white.withOpacity(0.3),
+                  ),
+                  spots: youSpots,
                 ),
-                spots: youSpots,
-              ),
-              LineChartBarData(
-                isCurved: true,
-                color: Colors.red,
-                barWidth: 4,
-                isStrokeCapRound: true,
-                dotData: const FlDotData(show: false),
-                belowBarData: BarAreaData(
-                  show: true,
-                  color: Colors.red.withOpacity(0.3),
+                LineChartBarData(
+                  isCurved: true,
+                  color: Colors.red,
+                  barWidth: 4,
+                  isStrokeCapRound: true,
+                  dotData: const FlDotData(show: false),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    color: Colors.red.withOpacity(0.3),
+                  ),
+                  spots: bottomSpots,
                 ),
-                spots: bottomSpots,
-              ),
-            ],
-          )),
+              ],
+            )),
+          ),
         ),
       ),
       Row(

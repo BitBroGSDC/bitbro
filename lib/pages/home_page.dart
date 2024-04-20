@@ -1,7 +1,9 @@
-import 'package:bitbro/bloc/app_bloc.dart';
-import 'package:bitbro/classes/question.dart';
+import 'package:bitbro/components/home/homegraph.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:bitbro/bloc/app_bloc.dart';
+import 'package:bitbro/classes/question.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../components/home/CurrentDayQuestion.dart';
@@ -30,11 +32,21 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: bluScuro,
       body: Stack(children: [
-        /* WidgetTommi(), */
+        HomeGraph(
+          top: 'Tizio',
+          bottom: 'Caio',
+          you: 'Sempronio',
+          topData: const [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          bottomData: const [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+          youData: const [5, 6, 7, 8, 9, 10, 9, 8, 7, 6],
+          navigateToFullScoreboard: () {
+            context.go('/scoreboard');
+          },
+        ),
         DraggableScrollableSheet(
           controller: controller,
-          initialChildSize: 0.6,
-          minChildSize: 0.6,
+          initialChildSize: 0.5,
+          minChildSize: 0.5,
           maxChildSize: 0.9,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
@@ -56,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Today's quest",
                             style: textBlue24Medium,
                           ),
@@ -68,15 +80,14 @@ class _HomePageState extends State<HomePage> {
                             },
                             isExpandable: false,
                             suffix: Icons.arrow_forward,
-                            
                           )
                         ],
                       ),
                       const SizedBox(height: 10),
                       CurrentDayQuestion(q: q),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       /* SummaryLastDay(), */
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       /*  LearnSomething(), */
                     ],
                   );

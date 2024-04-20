@@ -1,4 +1,5 @@
 import 'package:bitbro/pages/games_page.dart';
+import 'package:bitbro/pages/scoreboard.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,6 +38,14 @@ final GoRouter router = GoRouter(
                   return child;
                 }),
           ),
+          GoRoute(
+              path: '/scoreboard',
+              pageBuilder: (context, state) => CustomTransitionPage(
+                  child: const Scoreboard(),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return child;
+                  })),
         ])
   ],
 );
