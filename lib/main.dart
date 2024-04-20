@@ -1,4 +1,5 @@
 import 'package:bitbro/navigation/router.dart';
+import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,6 +16,10 @@ class BitBroApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Flutter Demo',
       routerConfig: router,
+      builder: (context, child) => Container(
+        color: bluScuro,
+        child: SafeArea(child: child!),
+      ),
       theme: ThemeData(
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           fontFamily: GoogleFonts.poppins().fontFamily,
@@ -23,10 +28,14 @@ class BitBroApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.grey[100],
           hoverColor: Colors.white.withOpacity(0.6),
           textTheme: const TextTheme(
-            titleLarge: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
-            titleMedium: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
-            bodySmall: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
-            bodyMedium: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
+            titleLarge: TextStyle(
+                color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
+            titleMedium: TextStyle(
+                color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+            bodySmall: TextStyle(
+                color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
+            bodyMedium: TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
           )),
     );
   }

@@ -87,10 +87,6 @@ class HomeGraph extends StatelessWidget {
         .toList();
 
     return Column(children: [
-      const SizedBox(
-        width: 200,
-        height: 60,
-      ),
       TextButton(
           onPressed: () => {navigateToFullScoreboard!()},
           style: TextButton.styleFrom(
