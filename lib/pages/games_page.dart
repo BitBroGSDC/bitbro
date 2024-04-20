@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 // - arguments
 // - level
 // -gain
-const int TOTAL_LEVELS = 10;
+const int TOTAL_LEVELS = 7;
 
 class Game {
   final String name;
@@ -42,11 +42,11 @@ class GamesPage extends StatefulWidget {
 
 class _GamesPageState extends State<GamesPage> {
   final List<Game> games = [
-    Game(name: 'Game 1', arguments: 'Arguments 1', level: 3, gain: 0.1),
-    Game(name: 'Game 2', arguments: 'Arguments 2', level: 2, gain: 0.2),
-    Game(name: 'Game 3', arguments: 'Arguments 3', level: 1, gain: 0.3),
-    Game(name: 'Game 4', arguments: 'Arguments 4', level: 7, gain: 0.4),
-    Game(name: 'Game 5', arguments: 'Arguments 5', level: 5, gain: 0.5),
+    Game(name: 'Game 1', arguments: 'Arguments 1', level: 3, gain: 500),
+    Game(name: 'Game 2', arguments: 'Arguments 2', level: 2, gain: 6000),
+    Game(name: 'Game 3', arguments: 'Arguments 3', level: 1, gain: 0),
+    Game(name: 'Game 4', arguments: 'Arguments 4', level: 6, gain: -200),
+    Game(name: 'Game 5', arguments: 'Arguments 5', level: 5, gain: 500),
   ];
 
   @override
@@ -79,12 +79,14 @@ class _GamesPageState extends State<GamesPage> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.fromLTRB(32, 10, 32, 10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Active games',
+                    'Active Games',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   ListView.builder(
@@ -114,15 +116,16 @@ class _GamesPageState extends State<GamesPage> {
           ),
           Container(
             color: Theme.of(context).primaryColor,
-            padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+            padding: const EdgeInsets.fromLTRB(100, 30, 100, 30),
             child: Container(
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(15),
                 border: Border.all(color: Colors.white),
               ),
               child: TextButton(
                 onPressed: () => print('sss'),
-                child: Text('Create new game', style: Theme.of(context).textTheme.titleMedium),
+                child: Text('NEW GAME', style: Theme.of(context).textTheme.titleMedium),
               ),
             ),
           ),
@@ -143,7 +146,7 @@ class GameListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(bottom: 30, top: 10),
         child: Column(
           children: [
             ListTile(
@@ -156,31 +159,38 @@ class GameListItem extends StatelessWidget {
               onTap: () {
                 context.go('/game/${game.name}');
               },
+              trailing: const Icon(Icons.arrow_forward),
             ),
             const SizedBox(height: 10),
-            Row(children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  for (int i = 0; i < game.level; i++)
-                    const Icon(
-                      Icons.circle,
-                      color: Color.fromARGB(255, 129, 238, 133),
-                      size: 18,
-                    ),
-                  for (int i = 0; i < TOTAL_LEVELS - game.level; i++)
-                    const Icon(
-                      Icons.circle,
-                      color: Color.fromARGB(255, 201, 199, 199),
-                      size: 18,
-                    ),
-                ],
-              ),
-              Text(
-                'Gain: ${game.gain}',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ]),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 20),
+              child: Row(children: [
+                Row(
+                  // circles
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (int i = 1; i < TOTAL_LEVELS; i++)
+                      Icon(
+                        Icons.circle,
+                        color: (game.level > i
+                            ? Colors.green
+                            : game.level == i
+                                ? Colors.orange
+                                : Colors.grey),
+                        size: 18,
+                      ),
+                  ],
+                ),
+                Spacer(flex: 3),
+                Text(
+                  "${game.gain >= 0 ? '+' : ''}${game.gain}\$",
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: game.gain > 0 ? Colors.green : Colors.red,
+                      ),
+                  textAlign: TextAlign.right,
+                ),
+              ]),
+            ),
           ],
         ));
   }
