@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: BlocBuilder<AppBloc, AppState>(
                 builder: (context, state) {
-                  final Question? q = state.currDayData?.question;
+                  final Question? q = state.currGame?.questions[state.currDay];
 
                   return ListView(
                     controller: scrollController,
