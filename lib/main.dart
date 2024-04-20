@@ -25,9 +25,9 @@ class BitBroApp extends StatelessWidget {
           hoverColor: Colors.white.withOpacity(0.6),
           textTheme: const TextTheme(
             titleLarge: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w400),
-            titleMedium: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
-            bodySmall: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w300),
-            bodyMedium: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
+            titleMedium: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+            bodySmall: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w300),
+            bodyMedium: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
           )),
     );
   }

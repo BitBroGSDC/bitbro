@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -71,42 +73,57 @@ class _GamesPageState extends State<GamesPage> {
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: Flex(
+        direction: Axis.vertical,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Active games',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 5, // Replace with actual number of active games
-              itemBuilder: (context, index) {
-                return GameListItem(game: games[index]);
-              },
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Finished games',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Active games',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: games.length,
+                    itemBuilder: (context, index) {
+                      return GameListItem(game: games[index]);
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Finished games',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: games.length,
+                    itemBuilder: (context, index) {
+                      return GameListItem(game: games[index]);
+                    },
+                  ),
+                ],
               ),
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 3, // Replace with actual number of finished games
-              itemBuilder: (context, index) {
-                return GameListItem(
-                  game: games[index],
-                );
-              },
+          Container(
+            color: Theme.of(context).primaryColor,
+            padding: const EdgeInsets.fromLTRB(100, 20, 100, 20),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: Colors.white),
+              ),
+              child: TextButton(
+                onPressed: () => print('sss'),
+                child: Text('Create new game', style: Theme.of(context).textTheme.titleMedium),
+              ),
             ),
           ),
         ],
@@ -130,16 +147,17 @@ class GameListItem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(game.name),
+              title: Text(game.name, style: Theme.of(context).textTheme.bodyMedium),
               tileColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              subtitle: Text(game.arguments),
+              subtitle: Text(game.arguments, style: Theme.of(context).textTheme.bodySmall),
               onTap: () {
                 context.go('/game/${game.name}');
               },
             ),
+            const SizedBox(height: 10),
             Row(children: [
               Row(
                 mainAxisSize: MainAxisSize.min,
@@ -147,13 +165,13 @@ class GameListItem extends StatelessWidget {
                   for (int i = 0; i < game.level; i++)
                     const Icon(
                       Icons.circle,
-                      color: Colors.green,
+                      color: Color.fromARGB(255, 129, 238, 133),
                       size: 18,
                     ),
                   for (int i = 0; i < TOTAL_LEVELS - game.level; i++)
                     const Icon(
                       Icons.circle,
-                      color: Colors.grey,
+                      color: Color.fromARGB(255, 201, 199, 199),
                       size: 18,
                     ),
                 ],
