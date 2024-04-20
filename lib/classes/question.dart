@@ -1,11 +1,15 @@
 class Question {
-  Question({required this.question, required this.answer, this.submitted = false, this.opinion, this.result});
+  Question({
+    this.updates,
+    required this.question,
+    required this.answer,
+    this.gain,
+  });
   final String question;
-  final String answer;
-  final bool submitted;
+  final String? answer;
 
-  final String? opinion;
+  final Map<String, int>? updates;
 
   // diff from last day
-  final int? result;
+  final int? gain;
 }

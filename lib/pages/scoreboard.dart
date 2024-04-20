@@ -78,7 +78,7 @@ class ScoreboardPoint extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
                 decoration: BoxDecoration(
-                  color: quasiBianco,
+                  color: griginoSfondo,
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
