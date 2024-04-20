@@ -1,11 +1,7 @@
 import 'package:bitbro/bloc/app_bloc.dart';
-import 'package:bitbro/classes/question.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-
-import '../components/home/CurrentDayQuestion.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
