@@ -1,43 +1,21 @@
-import 'package:bitbro/pages/games_page.dart';
-import 'package:bitbro/pages/home_page.dart';
+import 'package:bitbro/navigation/router.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(BitBroApp());
+  runApp(const BitBroApp());
 }
 
 class BitBroApp extends StatelessWidget {
-  BitBroApp({super.key});
+  const BitBroApp({super.key});
 
-  final GoRouter _rtr = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        pageBuilder: (context, state) => CustomTransitionPage(
-            child: const HomePage(title: 'Home Page'),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return child;
-            }),
-      ),
-      GoRoute(
-        path: '/games',
-        pageBuilder: (context, state) => CustomTransitionPage(
-            child: const GamesPage(),
-            transitionsBuilder: (context, animation, secondaryAnimation, child) {
-              return child;
-            }),
-      )
-    ],
-  );
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Demo',
-      routerConfig: _rtr,
+      routerConfig: router,
       theme: ThemeData(
           iconTheme: const IconThemeData(color: Colors.white, size: 30),
           fontFamily: GoogleFonts.poppins().fontFamily,
