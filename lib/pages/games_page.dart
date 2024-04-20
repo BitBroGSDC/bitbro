@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -125,7 +123,8 @@ class _GamesPageState extends State<GamesPage> {
               ),
               child: TextButton(
                 onPressed: () => print('sss'),
-                child: Text('NEW GAME', style: Theme.of(context).textTheme.titleMedium),
+                child: Text('NEW GAME',
+                    style: Theme.of(context).textTheme.titleMedium),
               ),
             ),
           ),
@@ -150,12 +149,14 @@ class GameListItem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(game.name, style: Theme.of(context).textTheme.bodyMedium),
+              title: Text(game.name,
+                  style: Theme.of(context).textTheme.bodyMedium),
               tileColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              subtitle: Text(game.arguments, style: Theme.of(context).textTheme.bodySmall),
+              subtitle: Text(game.arguments,
+                  style: Theme.of(context).textTheme.bodySmall),
               onTap: () {
                 context.go('/game/${game.name}');
               },
@@ -181,7 +182,7 @@ class GameListItem extends StatelessWidget {
                       ),
                   ],
                 ),
-                Spacer(flex: 3),
+                const Spacer(flex: 3),
                 Text(
                   "${game.gain >= 0 ? '+' : ''}${game.gain}\$",
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
