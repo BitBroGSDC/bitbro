@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../components/home/CurrentDayQuestion.dart';
 import '../components/button.dart';
-import '../components/home/SummaryLastDay.dart';
+import '../components/home/summary_last_paragraph.dart';
 import '../utils/styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           maxChildSize: 0.9,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
-              padding: const EdgeInsets.only(left: 16, right: 16),
+              padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
               decoration: const BoxDecoration(
                 color: bianco,
                 borderRadius: BorderRadius.only(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 10),
                       CurrentDayQuestion(q: q),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 24),
                       SummaryLastDay(q: q2),
                       SizedBox(height: 10),
                       /*  LearnSomething(), */

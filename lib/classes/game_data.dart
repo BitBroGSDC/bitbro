@@ -24,20 +24,29 @@ List<GameData> games = [
     'Tommaso': [0, 0, 0, 0, 0],
     'Daniele': [0, 0, 0, 0, 0],
   }, questions: {
-    1: Question(question: 'Question 1', answer: 'Answer 1', updates: {
-      'Sara': 0,
-      'Diego': 0,
-      'Davide': 0,
-      'Tommaso': 0,
-      'Daniele': 0
-    }),
-    2: Question(question: 'Question 2', answer: 'Answer 2', updates: {
-      'Sara': 0,
-      'Diego': 0,
-      'Davide': 0,
-      'Tommaso': 0,
-      'Daniele': 0
-    }),
+    1: Question(
+        question: 'Question 1',
+        answer: 'Answer 1',
+        updates: {
+          'Sara': 0,
+          'Diego': 0,
+          'Davide': 0,
+          'Tommaso': 0,
+          'Daniele': 0
+        },
+        gain: -45,
+        summary: "Summary 1"),
+    2: Question(
+        question: 'Question 2',
+        answer: 'Answer 2',
+        updates: {
+          'Sara': 0,
+          'Diego': 0,
+          'Davide': 0,
+          'Tommaso': 0,
+          'Daniele': 0
+        },
+        summary: "Summary 2"),
     3: Question(question: 'Question 3', answer: 'Answer 3', updates: {
       'Sara': 0,
       'Diego': 0,
