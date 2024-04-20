@@ -1,10 +1,12 @@
 import 'package:bitbro/components/home/homegraph.dart';
 import 'package:bitbro/utils/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bitbro/bloc/app_bloc.dart';
 import 'package:bitbro/classes/question.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../components/home/CurrentDayQuestion.dart';
 import '../components/button.dart';
@@ -31,6 +33,30 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text("Partita della Vita",
+            style: Theme.of(context).textTheme.titleLarge),
+        leading: IconButton(
+          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
+          onPressed: () {
+            context.go('/');
+          },
+        ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 32),
+            child: IconButton(
+              icon:
+                  const Icon(Ionicons.chevron_down_circle, color: Colors.white),
+              onPressed: () {
+                // TODO: switchare la partita
+                // switchare la partita anche quando si clicca il titolo della pagina?
+              },
+            ),
+          ),
+        ],
+      ),
       backgroundColor: bluScuro,
       body: Stack(children: [
         HomeGraph(
@@ -90,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                       CurrentDayQuestion(q: q),
                       const SizedBox(height: 24),
                       SummaryLastDay(q: q2),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       /*  LearnSomething(), */
                     ],
                   );

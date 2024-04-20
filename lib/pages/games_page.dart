@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 
 // game structure:
 // - name
@@ -64,7 +65,7 @@ class _GamesPageState extends State<GamesPage> {
         backgroundColor: Theme.of(context).primaryColor,
         title: Text("Games", style: Theme.of(context).textTheme.titleLarge),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
           onPressed: () {
             context.go('/');
           },
