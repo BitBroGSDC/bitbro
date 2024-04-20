@@ -1,6 +1,8 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../components/home/CurrentDayQuestion.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -44,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 controller: scrollController,
                 children: const <Widget>[
                   SizedBox(height: 10),
-                  /* CurrentDayQuestion(), */
+                  CurrentDayQuestion(),
                   SizedBox(height: 10),
                   /* SummaryLastDay(), */
                   SizedBox(height: 10),
