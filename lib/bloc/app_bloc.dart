@@ -17,11 +17,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     int currentGameIndex = 0;
 
     GameData? currGame = games[currentGameIndex];
+    Question? selectedQuestion = currGame.questions[currDay];
 
     emit(state.copyWith(
       currDay: currDay,
       currentGameIndex: currentGameIndex,
       currGame: currGame,
+      selectedQuestion: selectedQuestion,
     ));
   }
 }
