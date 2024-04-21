@@ -25,9 +25,9 @@ List<GameData> active_games = [
     userName: 'Diego',
     topic: "Fundamentals of Investments",
     scoreboard: {
-      'Tommaso': [45, 200],
-      'Diego': [1000, 3000],
-      'Sara': [2500, 1000],
+      'Tommaso': [0, 0, 0, 10, 87, 244, 311],
+      'Diego': [240, 20, 142, 171, 4, 256, 231],
+      'Sara': [0, 229, 261, 277, 87, 0, 157],
     },
     questions: {
       1: Question(

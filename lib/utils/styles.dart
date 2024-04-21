@@ -72,3 +72,15 @@ const text16Blue300 = TextStyle(
   fontWeight: FontWeight.w300,
   color: bluScuro,
 );
+
+const text24Bianco500 = TextStyle(
+  fontSize: 24,
+  fontWeight: FontWeight.w500,
+  color: bianco,
+);
+
+const text20Bianco500 = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
+  color: bianco,
+);

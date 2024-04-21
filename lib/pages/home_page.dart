@@ -34,88 +34,86 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarGoBack(
-        title: "Partita della Vita",
-        icon: Icon(Ionicons.chevron_down_circle, color: Colors.white),
-        onIconPressed: () {
-          context.push("/games");
-        },
-      ),
-      backgroundColor: bluScuro,
-      body: Stack(children: [
-        HomeGraph(
-          top: 'Tizio',
-          bottom: 'Caio',
-          you: 'Sempronio',
-          topData: const [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-          bottomData: const [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
-          youData: const [5, 6, 7, 8, 9, 10, 9, 8, 7, 6],
-          navigateToFullScoreboard: () {
-            context.push('/scoreboard');
+    return BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+      final Question? q = state.selectedQuestion;
+      final Question? q2 = state.questionOfLastDay;
+      final Course? course = state.currentCourse;
+
+      final game = state.currGame!;
+
+      return Scaffold(
+        appBar: AppBarGoBack(
+          title: game.gameName,
+          icon: const Icon(Ionicons.chevron_down_circle, color: Colors.white),
+          onIconPressed: () {
+            context.push("/games");
           },
         ),
-        DraggableScrollableSheet(
-          controller: controller,
-          initialChildSize: 0.5,
-          minChildSize: 0.5,
-          maxChildSize: 0.9,
-          builder: (BuildContext context, ScrollController scrollController) {
-            return Container(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
-              decoration: const BoxDecoration(
-                color: bianco,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+        backgroundColor: bluScuro,
+        body: Stack(children: [
+          HomeGraph(
+            top: game.scoreboard.entries.first.key,
+            bottom: game.scoreboard.entries.last.key,
+            you: game.userName,
+            topData: game.scoreboard.entries.first.value,
+            bottomData: game.scoreboard.entries.last.value,
+            youData: game.scoreboard[game.userName]!,
+            navigateToFullScoreboard: () {
+              context.push('/scoreboard');
+            },
+          ),
+          DraggableScrollableSheet(
+            controller: controller,
+            initialChildSize: 0.5,
+            minChildSize: 0.5,
+            maxChildSize: 0.9,
+            builder: (BuildContext context, ScrollController scrollController) {
+              return Container(
+                padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
+                decoration: const BoxDecoration(
+                  color: bianco,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
                 ),
-              ),
-              child: BlocBuilder<AppBloc, AppState>(
-                builder: (context, state) {
-                  final Question? q = state.selectedQuestion;
-
-                  final Question? q2 = state.questionOfLastDay;
-
-                  final Course? course = state.currentCourse;
-
-                  return ListView(
-                    controller: scrollController,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Today's quest",
-                            style: textBlue24Medium,
-                          ),
-                          Button(
-                            height: 28,
-                            text: 'HISTORY',
-                            onPressed: () {
-                              GoRouter.of(context).push('/history');
-                            },
-                            isExpandable: false,
-                            suffix: Icons.arrow_forward,
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      CurrentDayQuestion(q: q),
-                      const SizedBox(height: 24),
-                      SummaryLastDay(q: q2),
-                      const SizedBox(height: 10),
-                      LearnSomething(
-                        course: course,
-                      ),
-                      const SizedBox(height: 24),
-                    ],
-                  );
-                },
-              ),
-            );
-          },
-        ),
-      ]),
-    );
+                child: ListView(
+                  controller: scrollController,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Today's quest",
+                          style: textBlue24Medium,
+                        ),
+                        Button(
+                          height: 28,
+                          text: 'HISTORY',
+                          onPressed: () {
+                            GoRouter.of(context).push('/history');
+                          },
+                          isExpandable: false,
+                          suffix: Icons.arrow_forward,
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    CurrentDayQuestion(q: q),
+                    const SizedBox(height: 24),
+                    SummaryLastDay(q: q2),
+                    const SizedBox(height: 10),
+                    LearnSomething(
+                      course: course,
+                    ),
+                    const SizedBox(height: 24),
+                  ],
+                ),
+              );
+            },
+          ),
+        ]),
+      );
+    });
   }
 }

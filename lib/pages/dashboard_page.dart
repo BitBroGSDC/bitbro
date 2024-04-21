@@ -15,6 +15,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  late bool flagSwitch;
   late DraggableScrollableController controller;
 
   @override
@@ -22,6 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
 
     controller = DraggableScrollableController();
+    flagSwitch = true;
   }
 
   @override
@@ -40,6 +42,16 @@ class _DashboardPageState extends State<DashboardPage> {
         backgroundColor: bluScuro,
         foregroundColor: bianco,
         actions: [
+          TextButton(
+              onPressed: () => {
+                    setState(() {
+                      flagSwitch = !flagSwitch;
+                    })
+                  },
+              child: Text(flagSwitch ? '🇬🇧' : '🇮🇹',
+                  style: const TextStyle(
+                    fontSize: 28,
+                  ))),
           IconButton(
             icon: const Icon(Icons.settings, color: bianco),
             onPressed: () {
@@ -53,7 +65,7 @@ class _DashboardPageState extends State<DashboardPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 50),
+              padding: const EdgeInsets.fromLTRB(17, 0, 0, 20),
               child: Text('Sara Spagnoli',
                   style: Theme.of(context)
                       .textTheme
@@ -65,9 +77,9 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
         DraggableScrollableSheet(
           controller: controller,
-          initialChildSize: 0.75,
-          minChildSize: 0.75,
-          maxChildSize: 0.9,
+          initialChildSize: 0.8,
+          minChildSize: 0.8,
+          maxChildSize: 0.95,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
               padding: const EdgeInsets.only(top: 10, left: 16, right: 16),
@@ -101,33 +113,21 @@ class _DashboardPageState extends State<DashboardPage> {
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(color: bluScuro)),
-                          CourseTile(
-                            courseName: courses[0].title,
-                            courseDescription: courses[0].description,
-                            complection: courses[0].completion,
-                            index: 0,
-                          ),
-                          CourseTile(
-                            courseName: courses[1].title,
-                            courseDescription: courses[1].description,
-                            complection: courses[1].completion,
-                            index: 1,
-                          ),
-                          CourseTile(
-                            courseName: courses[2].title,
-                            courseDescription: courses[2].description,
-                            complection: courses[2].completion,
-                            index: 2,
-                          ),
+                          ...courses.asMap().entries.map((e) => CourseTile(
+                              courseName: e.value.title,
+                              courseDescription: e.value.description,
+                              completion: e.value.completion,
+                              index: e.key)),
                         ],
                       ),
                     ),
                     Container(
-                      margin: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                      margin:
+                          const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
-                          context.push('/courses');
+                          context.push('/course_choose');
                         },
                         style: ButtonStyle(
                           backgroundColor:
@@ -163,14 +163,14 @@ class _DashboardPageState extends State<DashboardPage> {
 class CourseTile extends StatelessWidget {
   final String courseName;
   final String courseDescription;
-  final int complection;
+  final int completion;
   final int index;
 
   const CourseTile({
     super.key,
     required this.courseName,
     required this.courseDescription,
-    required this.complection,
+    required this.completion,
     required this.index,
   });
 
@@ -180,7 +180,7 @@ class CourseTile extends StatelessWidget {
       onTap: () {
         // bloc event
         context.read<AppBloc>().add(ChangeCourse(index));
-        GoRouter.of(context).push('/');
+        context.push('/');
       },
       child: Container(
         margin: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
@@ -196,7 +196,7 @@ class CourseTile extends StatelessWidget {
                 style: const TextStyle(color: bluScuro, fontSize: 12),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis),
-            trailing: Text('$complection%',
+            trailing: Text('$completion%',
                 style: const TextStyle(color: bluScuro, fontSize: 16)),
           ),
         ),
@@ -213,7 +213,7 @@ class UserStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
       child: Column(children: [
         Flex(
           direction: Axis.horizontal,
