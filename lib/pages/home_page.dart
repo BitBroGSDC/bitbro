@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBarGoBack(
         title: "Partita della Vita",
-        icon: Icon(Ionicons.chevron_down_circle, color: Colors.white),
+        icon: const Icon(Ionicons.chevron_down_circle, color: Colors.white),
         onIconPressed: () {
           context.push("/games");
         },

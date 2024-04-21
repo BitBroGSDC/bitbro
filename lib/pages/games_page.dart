@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/app_bloc.dart';
 import '../classes/game_data.dart';
-import '../components/bordered_button.dart';
 
 const int TOTAL_LEVELS = 7;
 
@@ -26,11 +25,10 @@ class _GamesPageState extends State<GamesPage> {
       backgroundColor: bluScuro,
       body: BlocBuilder<AppBloc, AppState>(
         builder: (context, state) {
-          final List<GameData> active_games =
+          final List<GameData> activeGames =
               state.currentCourse?.activeGames ?? [];
 
-          final List<GameData> past_games =
-              state.currentCourse?.pastGames ?? [];
+          final List<GameData> pastGames = state.currentCourse?.pastGames ?? [];
 
           return Flex(
             direction: Axis.vertical,
@@ -51,9 +49,9 @@ class _GamesPageState extends State<GamesPage> {
                       ListView.builder(
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: active_games.length,
+                        itemCount: activeGames.length,
                         itemBuilder: (context, index) {
-                          return GameListItem(game: active_games[index]);
+                          return GameListItem(game: activeGames[index]);
                         },
                       ),
                       const SizedBox(height: 20),
@@ -64,9 +62,9 @@ class _GamesPageState extends State<GamesPage> {
                       ListView.builder(
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: past_games.length,
+                        itemCount: pastGames.length,
                         itemBuilder: (context, index) {
-                          return GameListItem(game: past_games[index]);
+                          return GameListItem(game: pastGames[index]);
                         },
                       ),
                     ],
@@ -88,12 +86,14 @@ class _GamesPageState extends State<GamesPage> {
 
 class GameListItem extends StatelessWidget {
   final GameData game;
-  int gain = 0;
+  late final int gain;
 
   // definisci il costruttore in modo da ottenere game e calolcare il gain
-  GameListItem({required this.game}) {
+  GameListItem({super.key, required this.game}) {
     if (game.questions.isNotEmpty) {
       gain = game.questions[game.questions.length - 1]!.gain!;
+    } else {
+      gain = 0;
     }
   }
 
@@ -140,7 +140,7 @@ class GameListItem extends StatelessWidget {
                 ),
                 const Spacer(flex: 3),
                 Text(
-                  "${gain >= 0 ? '+' : ''}${gain}\$",
+                  "${gain >= 0 ? '+' : ''}$gain\$",
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: gain > 0 ? Colors.green : Colors.red,
                       ),

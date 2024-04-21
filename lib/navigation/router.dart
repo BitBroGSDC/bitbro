@@ -1,4 +1,3 @@
-import 'package:bitbro/classes/courses/topic.dart';
 import 'package:bitbro/pages/course_choose_page.dart';
 import 'package:bitbro/pages/course_topics.dart';
 import 'package:bitbro/pages/courses_page.dart';
