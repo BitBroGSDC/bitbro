@@ -1,5 +1,6 @@
 import 'package:bitbro/pages/course_choose_page.dart';
 import 'package:bitbro/pages/course_topics.dart';
+import 'package:bitbro/pages/courses_page.dart';
 import 'package:bitbro/pages/dashboard_page.dart';
 import 'package:bitbro/pages/games_page.dart';
 import 'package:bitbro/pages/question_page.dart';
