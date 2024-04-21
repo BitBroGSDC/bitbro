@@ -45,24 +45,9 @@ List<GameData> active_games = [
         },
       ),
       2: Question(
-        question: 'Hai investito in un\'azienda tecnologica coinvolta in una controversia legale sulle presunte violazioni del diritto d\'autore, causando una temporanea caduta del prezzo delle azioni. Cosa vorresti fare?',
+        question:
+            'Hai investito in un\'azienda tecnologica coinvolta in una controversia legale sulle presunte violazioni del diritto d\'autore, causando una temporanea caduta del prezzo delle azioni. Cosa vorresti fare?',
         answer: 'Answer 2',
-        gain: 20,
-        updates: {
-          'Tommaso': 0,
-          'Diego': 0,
-          'Sara': 0,
-        },
-      ),
-      3: Question(
-        question: 'Question 3',
-        answer: 'Answer 3',
-        gain: 30,
-        updates: {
-          'Tommaso': 0,
-          'Diego': 0,
-          'Sara': 0,
-        },
       ),
     },
   ),

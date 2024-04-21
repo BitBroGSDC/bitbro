@@ -5,6 +5,7 @@ import 'custom_paragraph.dart';
 
 class Course {
   Course({
+    this.completion = 20,
     required this.title,
     required this.description,
     required this.topics,
@@ -16,10 +17,12 @@ class Course {
   String description;
   List<Topic> topics;
   List<GameData> activeGames;
+  final int completion;
 }
 
 List<Course> courses = [
   Course(
+    completion: 60,
     activeGames: active_games,
     title: 'Introduzione agli Investimenti',
     description:
@@ -54,6 +57,8 @@ List<Course> courses = [
     ],
   ),
   Course(
+    activeGames: active_games,
+    completion: 40,
     title: 'Come gestire il debito',
     description:
         'Questo corso fornisce una guida pratica su come gestire il debito in modo efficace, aiutando gli individui a comprendere i vari tipi di debito, sviluppare strategie per ridurlo e pianificare una gestione finanziaria sana per il futuro.',
@@ -87,6 +92,7 @@ List<Course> courses = [
     ],
   ),
   Course(
+    activeGames: active_games,
     title: 'Trading di Criptovalute',
     description:
         'Questo corso fornisce una introduzione pratica al trading di criptovalute, coprendo principi fondamentali, analisi di mercato e gestione dei rischi. È ideale per chi vuole iniziare a negoziare criptovalute con sicurezza.',
@@ -102,6 +108,7 @@ List<Course> courses = [
     ],
   ),
   Course(
+    activeGames: active_games,
     title: "Fondamenti dell'Investimento Azionario",
     description:
         'Questo corso offre una panoramica completa degli investimenti in azioni, coprendo concetti fondamentali, strategie di selezione e analisi di titoli.',
@@ -117,6 +124,7 @@ List<Course> courses = [
     ],
   ),
   Course(
+    activeGames: active_games,
     title: 'Analisi Tecnica per il Mercato Azionario',
     description:
         "Un corso avanzato che approfondisce l'analisi tecnica nel trading azionario, esaminando indicatori di mercato, pattern di prezzo e strategie di trading basate su dati storici.",

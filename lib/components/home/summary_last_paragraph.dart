@@ -20,7 +20,7 @@ class SummaryLastDay extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(top :8.0),
+      padding: const EdgeInsets.only(top: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -52,7 +52,11 @@ class SummaryLastDay extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(child: Text(q!.summary!, textAlign: TextAlign.start, maxLines: 3, overflow: TextOverflow.ellipsis)),
+                        Expanded(
+                            child: Text(q!.summary!,
+                                textAlign: TextAlign.start,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis)),
                         Container(
                           alignment: Alignment.centerRight,
                           child: SvgPicture.asset(
@@ -65,21 +69,21 @@ class SummaryLastDay extends StatelessWidget {
                   q?.gain != null
                       ? Builder(builder: (context) {
                           bool isPositive;
-      
+
                           String parsedGain;
-      
-                          if (q!.gain > 0) {
+
+                          if (q!.gain! > 0) {
                             isPositive = true;
                             parsedGain = "+";
                           } else {
                             isPositive = false;
                             parsedGain = "";
                           }
-      
+
                           TextStyle style =
                               isPositive ? text14Green500 : text14Red500;
-      
-                          parsedGain += q!.gain.toStringAsFixed(2);
+
+                          parsedGain += q!.gain!.toStringAsFixed(2);
                           return Container2Elements(
                               firstText: "Result",
                               text: parsedGain,

@@ -81,7 +81,7 @@ class GameListItem extends StatelessWidget {
   // definisci il costruttore in modo da ottenere game e calolcare il gain
   GameListItem({required this.game}) {
     if (game.questions.isNotEmpty) {
-      gain = game.questions[game.questions.length - 1]!.gain;
+      gain = game.questions[game.questions.length - 1]!.gain!;
     }
   }
 
@@ -92,12 +92,14 @@ class GameListItem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(game.gameName, style: Theme.of(context).textTheme.bodyMedium),
+              title: Text(game.gameName,
+                  style: Theme.of(context).textTheme.bodyMedium),
               tileColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              subtitle: Text(game.topic, style: Theme.of(context).textTheme.bodySmall),
+              subtitle: Text(game.topic,
+                  style: Theme.of(context).textTheme.bodySmall),
               onTap: () {
                 // context.go('/game/${game.name}');
                 // TODO set that game as active and go to the game page

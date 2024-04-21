@@ -2,6 +2,9 @@ import 'package:bitbro/bloc/app_bloc.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import '../classes/courses/course.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -69,6 +72,12 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
               child: BlocBuilder<AppBloc, AppState>(
                 builder: (context, state) {
+                  List<Course>? courses = state.activeCourses;
+
+                  if (courses.isEmpty) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
                   return Column(children: [
                     Expanded(
                       child: ListView(
@@ -84,21 +93,24 @@ class _DashboardPageState extends State<DashboardPage> {
                                   .textTheme
                                   .bodyMedium
                                   ?.copyWith(color: bluScuro)),
-                          const CourseTile(
-                              courseName: 'Stakeholder Management',
-                              courseDescription:
-                                  'Learn how to manage stakeholders',
-                              complection: 20),
-                          const CourseTile(
-                              courseName: 'Agile Project Management',
-                              courseDescription:
-                                  'Learn how to manage agile projects',
-                              complection: 40),
-                          const CourseTile(
-                              courseName: 'Scrum Master',
-                              courseDescription:
-                                  'Learn how to be a scrum master',
-                              complection: 60),
+                          CourseTile(
+                            courseName: courses[0].title,
+                            courseDescription: courses[0].description,
+                            complection: courses[0].completion,
+                            index: 0,
+                          ),
+                          CourseTile(
+                            courseName: courses[1].title,
+                            courseDescription: courses[1].description,
+                            complection: courses[1].completion,
+                            index: 1,
+                          ),
+                          CourseTile(
+                            courseName: courses[2].title,
+                            courseDescription: courses[2].description,
+                            complection: courses[2].completion,
+                            index: 2,
+                          ),
                         ],
                       ),
                     ),
@@ -107,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
-                          // context.go('/courses');
+                          context.push('/courses');
                         },
                         style: ButtonStyle(
                           backgroundColor:
@@ -144,30 +156,41 @@ class CourseTile extends StatelessWidget {
   final String courseName;
   final String courseDescription;
   final int complection;
+  final int index;
 
   const CourseTile({
     super.key,
     required this.courseName,
     required this.courseDescription,
     required this.complection,
+    required this.index,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        color: griginoSfondo,
-        child: ListTile(
-          title: Text(courseName,
-              style: const TextStyle(color: bluScuro, fontSize: 16)),
-          subtitle: Text(courseDescription,
-              style: const TextStyle(color: bluScuro, fontSize: 12)),
-          trailing: Text('$complection%',
-              style: const TextStyle(color: bluScuro, fontSize: 16)),
+    return GestureDetector(
+      onTap: () {
+        // bloc event
+        context.read<AppBloc>().add(ChangeCourse(index));
+        GoRouter.of(context).push('/');
+      },
+      child: Container(
+        margin: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          color: griginoSfondo,
+          child: ListTile(
+            title: Text(courseName,
+                style: const TextStyle(color: bluScuro, fontSize: 16)),
+            subtitle: Text(courseDescription,
+                style: const TextStyle(color: bluScuro, fontSize: 12),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis),
+            trailing: Text('$complection%',
+                style: const TextStyle(color: bluScuro, fontSize: 16)),
+          ),
         ),
       ),
     );
