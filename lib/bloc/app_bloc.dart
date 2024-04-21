@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../classes/courses/course.dart';
+import '../classes/courses/topic.dart';
 import '../classes/game_data.dart';
 import '../classes/nullable.dart';
 
@@ -16,6 +17,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppInit>(_appInit);
     on<ChangeCourse>(_changeCourse);
     on<ChangeGame>(_changeGame);
+    on<SelectTopic>(_selectTopic);
+    on<MarkTopicCompleted>(_markTopicCompleted);
   }
 
   _appInit(AppInit event, Emitter<AppState> emit) {
@@ -38,14 +41,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     }
 
     emit(state.copyWith(
-      activeCourses: coursesMocked,
-      currDay: currDay,
-      currentGameIndex: currentGameIndex,
-      currGame: currGame,
-      selectedQuestion: selectedQuestion,
-      questionOfLastDay: Nullable(questionOfLastDay),
-      currentCourse: currCourse
-    ));
+        activeCourses: coursesMocked,
+        currDay: currDay,
+        currentGameIndex: currentGameIndex,
+        currGame: currGame,
+        selectedQuestion: selectedQuestion,
+        questionOfLastDay: Nullable(questionOfLastDay),
+        currentCourse: currCourse));
   }
 
   _changeCourse(ChangeCourse event, Emitter<AppState> emit) {
@@ -104,5 +106,37 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       questionOfLastDay: Nullable(questionOfLastDay),
       currentGameIndex: newGameIndex,
     ));
+  }
+
+  _selectTopic(SelectTopic event, Emitter<AppState> emit) {
+    emit(state.copyWith(selectedTopic: event.topic));
+  }
+
+  _markTopicCompleted(MarkTopicCompleted event, Emitter<AppState> emit) {
+    Topic? newTopic = state.selectedTopic?.copyWith(isCompleted: true);
+
+    emit(state.copyWith(selectedTopic: newTopic));
+
+    Course? currCourse = state.currentCourse;
+
+    List<Topic> newTopics = currCourse!.topics.map((topic) {
+      if (topic.title == event.topicName) {
+        return topic.copyWith(isCompleted: true);
+      } else {
+        return topic;
+      }
+    }).toList();
+
+    Course newCourse = currCourse.copyWith(topics: newTopics);
+
+    List<Course> newCourses = state.activeCourses.map((course) {
+      if (course.title == currCourse.title) {
+        return newCourse;
+      } else {
+        return course;
+      }
+    }).toList();
+
+    emit(state.copyWith(activeCourses: newCourses, currentCourse: newCourse));
   }
 }

@@ -21,9 +21,9 @@ class GameData {
 List<GameData> active_games = [
   GameData(
     gameId: '1',
-    gameName: 'Game 1',
+    gameName: 'Partita degli Investimenti',
     userName: 'Diego',
-    topic: 'Topic 1',
+    topic: 'Principi fondamentali degli investimenti',
     scoreboard: {
       'Tommaso': [45, 200],
       'Diego': [1000, 3000],
@@ -53,9 +53,9 @@ List<GameData> active_games = [
   ),
   GameData(
     gameId: '2',
-    gameName: 'Game 2',
+    gameName: 'Partita sul Rischio',
     userName: 'Diego',
-    topic: 'Topic 2',
+    topic: 'Tipi di investimenti e rischi associati',
     scoreboard: {
       'Tommaso': [0, 0],
       'Diego': [0, 0],
@@ -99,9 +99,9 @@ List<GameData> active_games = [
 List<GameData> past_games = [
   GameData(
     gameId: '3',
-    gameName: 'Game 3',
+    gameName: 'Partita sulle Strategie di Investimento',
     userName: 'Sara',
-    topic: 'Topic 3',
+    topic: 'Concetti avanzati di investimento',
     scoreboard: {
       'Tommaso': [1, 2, 3, 4, 5, 6, 7],
       'Diego': [1, 2, 3, 4, 5, 6, 7],

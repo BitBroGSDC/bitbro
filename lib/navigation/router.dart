@@ -6,6 +6,7 @@ import 'package:bitbro/pages/games_page.dart';
 import 'package:bitbro/pages/question_page.dart';
 import 'package:bitbro/pages/scoreboard.dart';
 import 'package:bitbro/pages/summary_page.dart';
+import 'package:bitbro/pages/topic_details.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -101,6 +102,15 @@ final GoRouter router = GoRouter(
             path: '/summary',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const SummaryPage(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return child;
+                }),
+          ),
+          GoRoute(
+            path: '/topic_details',
+            pageBuilder: (context, state) => CustomTransitionPage(
+                child: const TopicDetails(),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
                   return child;

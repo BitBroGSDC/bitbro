@@ -35,9 +35,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarGoBack(
+      appBar: AppBarGoBack(
         title: "Partita della Vita",
         icon: Icon(Ionicons.chevron_down_circle, color: Colors.white),
+        onIconPressed: () {
+          context.push("/games");
+        },
       ),
       backgroundColor: bluScuro,
       body: Stack(children: [
@@ -89,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                             height: 28,
                             text: 'HISTORY',
                             onPressed: () {
-                              GoRouter.of(context).go('/history');
+                              GoRouter.of(context).push('/history');
                             },
                             isExpandable: false,
                             suffix: Icons.arrow_forward,

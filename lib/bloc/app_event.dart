@@ -37,3 +37,18 @@ class ChangeGame extends AppEvent {
   @override
   List<Object> get props => [gameIndex];
 }
+
+class SelectTopic extends AppEvent {
+  final Topic topic;
+
+  const SelectTopic(this.topic);
+
+  @override
+  List<Object> get props => [topic];
+}
+
+class MarkTopicCompleted extends AppEvent {
+  final String topicName;
+
+  const MarkTopicCompleted(this.topicName);
+}

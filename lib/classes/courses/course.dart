@@ -10,25 +10,47 @@ class Course {
     required this.description,
     required this.topics,
     this.activeGames = const [],
+    this.pastGames = const [],
   });
 
-  String title;
+  final String title;
 
-  String description;
-  List<Topic> topics;
-  List<GameData> activeGames;
+  final String description;
+  final List<Topic> topics;
+  final List<GameData> activeGames;
+  final List<GameData> pastGames;
   final int completion;
+
+  Course copyWith({
+    int? completion,
+    String? title,
+    String? description,
+    List<Topic>? topics,
+    List<GameData>? activeGames,
+    List<GameData>? pastGames,
+  }) {
+    return Course(
+      completion: completion ?? this.completion,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      topics: topics ?? this.topics,
+      activeGames: activeGames ?? this.activeGames,
+      pastGames: pastGames ?? this.pastGames,
+    );
+  }
 }
 
 List<Course> courses = [
   Course(
     completion: 60,
+    pastGames: past_games,
     activeGames: active_games,
     title: 'Introduzione agli Investimenti',
     description:
         'Questo corso fornisce una panoramica introduttiva sugli investimenti finanziari, coprendo tipologie di investimento, rischi, strategie di allocazione e analisi di mercato. È ideale per chi desidera acquisire una comprensione di base degli investimenti per iniziare a pianificare in modo consapevole il proprio futuro finanziario.',
     topics: [
       Topic(
+          isCompleted: true,
           title: 'Principi fondamentali degli investimenti',
           description:
               'Questo capitolo offre una panoramica essenziale sui concetti di base degli investimenti finanziari, inclusi rischio e rendimento, diversificazione e obiettivi finanziari.',

@@ -19,7 +19,7 @@ class LearnSomething extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(top : 16.0),
+      padding: const EdgeInsets.only(top: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,9 +35,14 @@ class LearnSomething extends StatelessWidget {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               Topic topic = course!.topics[index];
+
+              if (topic.isCompleted) {
+                return const SizedBox.shrink();
+              }
+
               return GestureDetector(
                 onTap: () {
-                  GoRouter.of(context).push("/lesson");
+                  GoRouter.of(context).push("/course_topics");
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 16),
@@ -54,7 +59,10 @@ class LearnSomething extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                              child: Text(topic.title, style: text18Bianco500)),
+                              child: Text(
+                            topic.title,
+                            style: text18Bianco500,
+                          )),
                           Container(
                             alignment: Alignment.centerRight,
                             constraints: const BoxConstraints(minWidth: 50),
@@ -66,7 +74,12 @@ class LearnSomething extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Text(topic.description, style: text14Bianco300),
+                      Text(
+                        topic.description,
+                        style: text14Bianco300,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ],
                   ),
                 ),

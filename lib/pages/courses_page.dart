@@ -1,8 +1,6 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:ionicons/ionicons.dart';
 
 import '../bloc/app_bloc.dart';
 import '../classes/courses/course.dart';
@@ -19,12 +17,12 @@ class _CoursesPageState extends State<CoursesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarGoBack(
+      appBar: const AppBarGoBack(
         title: "All Courses",
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 24,
         ),
         child: Column(

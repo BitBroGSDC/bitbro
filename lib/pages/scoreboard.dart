@@ -157,7 +157,7 @@ class Scoreboard extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Ionicons.arrow_back, color: Colors.white),
           onPressed: () {
-            context.go('/');
+            context.push('/');
           },
         ),
       ),

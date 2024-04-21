@@ -2,8 +2,11 @@
 
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../bloc/app_bloc.dart';
+import '../classes/courses/course.dart';
 import '../components/appbar_go_back.dart';
-import '../components/bordered_button.dart';
 
 class CourseTopicsPage extends StatefulWidget {
   const CourseTopicsPage({super.key});
@@ -22,133 +25,129 @@ class _CourseTopicsPageState extends State<CourseTopicsPage> {
         backgroundColor: bluScuro,
         body: Padding(
           padding: const EdgeInsets.only(
+            top: 20,
             left: 10,
             right: 40,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      topicTile(topicName: 'Introduction to Python'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Transform.rotate(
-                          angle: 3.14 / 2,
-                          child: Icon(
-                            Icons.linear_scale,
-                            color: bianco,
-                          ),
-                        ),
-                      ),
-                      topicTile(topicName: 'Python Basics'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Transform.rotate(
-                          angle: 3.14 / 2,
-                          child: Icon(
-                            Icons.linear_scale,
-                            color: bianco,
-                          ),
-                        ),
-                      ),
-                      topicTile(topicName: 'Python Intermediate'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Transform.rotate(
-                          angle: 3.14 / 2,
-                          child: Icon(
-                            Icons.linear_scale,
-                            color: bianco,
-                          ),
-                        ),
-                      ),
-                      topicTile(topicName: 'Python Advanced'),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Transform.rotate(
-                          angle: 3.14 / 2,
-                          child: Icon(
-                            Icons.linear_scale,
-                            color: bianco,
-                          ),
-                        ),
-                      ),
-                      topicTile(topicName: 'Python Projects'),
-                    ],
+          child: BlocBuilder<AppBloc, AppState>(
+            builder: (context, state) {
+              final Course? course = state.currentCourse;
+
+              if (course == null) {
+                return const Center(
+                  child: Text(
+                    'No Course Selected',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: bianco,
+                    ),
                   ),
+                );
+              }
+
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: course.topics.length,
+                  itemBuilder: (context, index) {
+                    if (index == course.topics.length - 1) {
+                      return TopicTile(
+                        topicName: course.topics[index].title,
+                        isCompleted: course.topics[index].isCompleted,
+                        onTap: () {
+                          context
+                              .read<AppBloc>()
+                              .add(SelectTopic(course.topics[index]));
+                          GoRouter.of(context).push('/topic_details');
+                        },
+                      );
+                    }
+
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TopicTile(
+                          topicName: course.topics[index].title,
+                          isCompleted: course.topics[index].isCompleted,
+                          onTap: () {
+                            context
+                                .read<AppBloc>()
+                                .add(SelectTopic(course.topics[index]));
+                            GoRouter.of(context).push('/topic_details');
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Transform.rotate(
+                            angle: 3.14 / 2,
+                            child: Icon(
+                              Icons.linear_scale,
+                              color: bianco,
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-              ),
-              Center(
-                child: Container(
-                  width: double.infinity,
-                  color: Theme.of(context).primaryColor,
-                  padding: const EdgeInsets.fromLTRB(80, 30, 80, 30),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Text(
-                      //   'Progess',
-                      //   style: TextStyle(fontSize: 14, color: bianco),
-                      // ),
-                      BorderedButton(textButton: 'GO TO GAMES'),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+              );
+            },
           ),
         ));
   }
 }
 
-class topicTile extends StatelessWidget {
+class TopicTile extends StatelessWidget {
   final String topicName;
-  const topicTile({
+  final bool isCompleted;
+  final Function()? onTap;
+  const TopicTile({
     super.key,
     required this.topicName,
+    required this.isCompleted,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.only(bottom: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Icon(
-                Icons.book_outlined,
-                color: bianco,
-              ),
-            ),
-            // Spacer(),
-            Container(
-              width: 250,
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: bianco,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Text(
-                topicName,
-                style: const TextStyle(
-                  fontSize: 18,
-                  backgroundColor: bianco,
-                  color: bluScuro,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+          padding: EdgeInsets.only(bottom: 20, top: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: isCompleted ? verdeBrillante : Colors.transparent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(
+                  Icons.book_outlined,
+                  color: isCompleted ? bluScuro : bianco,
                 ),
               ),
-            ),
-          ],
-        ));
+              // Spacer(),
+              Container(
+                width: 250,
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: bianco,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text(
+                  topicName,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    backgroundColor: bianco,
+                    color: bluScuro,
+                  ),
+                ),
+              ),
+            ],
+          )),
+    );
   }
 }

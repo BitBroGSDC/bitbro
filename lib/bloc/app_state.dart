@@ -10,6 +10,7 @@ class AppState extends Equatable {
     this.activeCourses = const [],
     this.currentCourseIndex = 0,
     this.currentCourse,
+    this.selectedTopic,
   });
 
   final int currDay;
@@ -20,6 +21,7 @@ class AppState extends Equatable {
   final GameData? currGame;
   final List<Course> activeCourses;
   final Course? currentCourse;
+  final Topic? selectedTopic;
 
   @override
   List<Object?> get props => [
@@ -30,7 +32,8 @@ class AppState extends Equatable {
         questionOfLastDay,
         activeCourses,
         currentCourseIndex,
-        currentCourse
+        currentCourse,
+        selectedTopic,
       ];
 
   AppState copyWith({
@@ -42,6 +45,7 @@ class AppState extends Equatable {
     List<Course>? activeCourses,
     int? currentCourseIndex,
     Course? currentCourse,
+    Topic? selectedTopic,
   }) {
     return AppState(
       currDay: currDay ?? this.currDay,
@@ -54,6 +58,7 @@ class AppState extends Equatable {
       activeCourses: activeCourses ?? this.activeCourses,
       currentCourseIndex: currentCourseIndex ?? this.currentCourseIndex,
       currentCourse: currentCourse ?? this.currentCourse,
+      selectedTopic: selectedTopic ?? this.selectedTopic,
     );
   }
 }
