@@ -90,7 +90,7 @@ class SummaryPage extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.all(16),
-                        margin: const EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10, bottom: 24),
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: griginoSfondo,

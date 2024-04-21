@@ -43,15 +43,19 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 0, 50),
-              child: Text('Sara Spagnoli', style: Theme.of(context).textTheme.titleSmall?.copyWith(color: bianco)),
+              child: Text('Sara Spagnoli',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(color: bianco)),
             ),
             const UserStats(),
           ],
         ),
         DraggableScrollableSheet(
           controller: controller,
-          initialChildSize: 0.8,
-          minChildSize: 0.6,
+          initialChildSize: 0.75,
+          minChildSize: 0.75,
           maxChildSize: 0.9,
           builder: (BuildContext context, ScrollController scrollController) {
             return Container(
@@ -70,10 +74,31 @@ class _DashboardPageState extends State<DashboardPage> {
                       child: ListView(
                         controller: scrollController,
                         children: [
-                          Text('My Courses', style: Theme.of(context).textTheme.titleMedium?.copyWith(color: bluScuro)),
-                          const CourseTile(courseName: 'Stakeholder Management', courseDescription: 'Learn how to manage stakeholders', complection: 20),
-                          const CourseTile(courseName: 'Agile Project Management', courseDescription: 'Learn how to manage agile projects', complection: 40),
-                          const CourseTile(courseName: 'Scrum Master', courseDescription: 'Learn how to be a scrum master', complection: 60),
+                          Text('My Courses',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(color: bluScuro)),
+                          Text("Learn something new and play games!",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(color: bluScuro)),
+                          const CourseTile(
+                              courseName: 'Stakeholder Management',
+                              courseDescription:
+                                  'Learn how to manage stakeholders',
+                              complection: 20),
+                          const CourseTile(
+                              courseName: 'Agile Project Management',
+                              courseDescription:
+                                  'Learn how to manage agile projects',
+                              complection: 40),
+                          const CourseTile(
+                              courseName: 'Scrum Master',
+                              courseDescription:
+                                  'Learn how to be a scrum master',
+                              complection: 60),
                         ],
                       ),
                     ),
@@ -85,15 +110,23 @@ class _DashboardPageState extends State<DashboardPage> {
                           // context.go('/courses');
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(bluScuro),
-                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsetsDirectional.all(20)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(bluScuro),
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                  const EdgeInsetsDirectional.all(20)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
                         ),
-                        child: Text('FIND NEW COURSE', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: bianco)),
+                        child: Text('FIND NEW COURSE',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: bianco)),
                       ),
                     ),
                   ]);
@@ -129,9 +162,12 @@ class CourseTile extends StatelessWidget {
         ),
         color: griginoSfondo,
         child: ListTile(
-          title: Text(courseName, style: const TextStyle(color: bluScuro, fontSize: 16)),
-          subtitle: Text(courseDescription, style: const TextStyle(color: bluScuro, fontSize: 12)),
-          trailing: Text('$complection%', style: const TextStyle(color: bluScuro, fontSize: 16)),
+          title: Text(courseName,
+              style: const TextStyle(color: bluScuro, fontSize: 16)),
+          subtitle: Text(courseDescription,
+              style: const TextStyle(color: bluScuro, fontSize: 12)),
+          trailing: Text('$complection%',
+              style: const TextStyle(color: bluScuro, fontSize: 16)),
         ),
       ),
     );
@@ -193,7 +229,10 @@ class PlayerStat extends StatelessWidget {
                 ),
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 10),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(fontSize: 10),
                 ),
               ],
             ),

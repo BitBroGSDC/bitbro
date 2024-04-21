@@ -9,7 +9,7 @@ import 'package:ionicons/ionicons.dart';
 
 import '../classes/courses/course.dart';
 import '../components/appbar_go_back.dart';
-import '../components/home/CurrentDayQuestion.dart';
+import '../components/home/current_day_question.dart';
 import '../components/button.dart';
 import '../components/home/learn_something.dart';
 import '../components/home/summary_last_paragraph.dart';

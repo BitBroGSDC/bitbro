@@ -13,7 +13,7 @@ import '../bloc/app_bloc.dart';
 import '../pages/home_page.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/dashboard',
   routes: [
     ShellRoute(
         builder: (context, state, child) {

@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bitbro/classes/game_data.dart';
-import 'package:bitbro/components/AppBarGoBack.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import '../components/appbar_go_back.dart';
 import '../components/bordered_button.dart';
 
 class CourseTopicsPage extends StatefulWidget {
