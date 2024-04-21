@@ -39,7 +39,8 @@ class QuestionPage extends StatelessWidget {
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(q.question, style: text16Bianco500, textAlign: TextAlign.center),
+                      child: Text(q.question,
+                          style: text16Bianco500, textAlign: TextAlign.justify),
                     ),
                   ),
                 ),
@@ -57,15 +58,15 @@ class QuestionPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "Game Master has posed you a question.",
                           style: text20Blue500,
                         ),
-                        Text("Ponder your response well!",
+                        const Text("Ponder your response well!",
                             style: text16Blue300),
                         const SizedBox(height: 20),
-                        Text("Your Response", style: text20Blue500),
-                        UserTextField(
+                        const Text("Your Response", style: text20Blue500),
+                        const UserTextField(
                           hintText: "Type your response here",
                           backgroundColor: griginoSfondo,
                         ),
