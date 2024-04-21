@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
           ),
           DraggableScrollableSheet(
             controller: controller,
-            initialChildSize: 0.5,
-            minChildSize: 0.5,
-            maxChildSize: 0.9,
+            initialChildSize: 0.55,
+            minChildSize: 0.55,
+            maxChildSize: 1,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
