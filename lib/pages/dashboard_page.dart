@@ -127,7 +127,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
-                          context.push('/courses');
+                          context.push('/course_choose');
                         },
                         style: ButtonStyle(
                           backgroundColor:
