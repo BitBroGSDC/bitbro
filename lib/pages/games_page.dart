@@ -2,6 +2,7 @@ import 'package:bitbro/components/appbar_go_back.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../bloc/app_bloc.dart';
 import '../classes/game_data.dart';
@@ -99,56 +100,63 @@ class GameListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(bottom: 30, top: 10),
-        child: Column(
-          children: [
-            ListTile(
-              title: Text(game.gameName,
-                  style: Theme.of(context).textTheme.bodyMedium),
-              tileColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+    return BlocBuilder<AppBloc, AppState>(builder: ((context, state) {
+      return Padding(
+          padding: const EdgeInsets.only(bottom: 30, top: 10),
+          child: Column(
+            children: [
+              ListTile(
+                title: Text(game.gameName,
+                    style: Theme.of(context).textTheme.bodyMedium),
+                tileColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                subtitle: Text(game.topic,
+                    style: Theme.of(context).textTheme.bodySmall),
+                onTap: () {
+                  final newgame = active_games
+                      .indexWhere((element) => element.gameId == game.gameId);
+                  if (newgame == -1) {
+                    return;
+                  }
+                  context.read<AppBloc>().add(ChangeGame(newgame));
+                  context.pop();
+                },
+                trailing: const Icon(Icons.arrow_forward),
               ),
-              subtitle: Text(game.topic,
-                  style: Theme.of(context).textTheme.bodySmall),
-              onTap: () {
-                // context.go('/game/${game.name}');
-                // TODO set that game as active and go to the game page
-              },
-              trailing: const Icon(Icons.arrow_forward),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 20),
-              child: Row(children: [
-                Row(
-                  // circles
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    for (int i = 1; i < TOTAL_LEVELS; i++)
-                      Icon(
-                        Icons.circle,
-                        color: (game.questions.length > i
-                            ? Colors.green
-                            : game.questions.length == i
-                                ? Colors.orange
-                                : Colors.grey),
-                        size: 18,
-                      ),
-                  ],
-                ),
-                const Spacer(flex: 3),
-                Text(
-                  "${gain >= 0 ? '+' : ''}$gain\$",
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: gain > 0 ? Colors.green : Colors.red,
-                      ),
-                  textAlign: TextAlign.right,
-                ),
-              ]),
-            ),
-          ],
-        ));
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 20),
+                child: Row(children: [
+                  Row(
+                    // circles
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      for (int i = 1; i < TOTAL_LEVELS; i++)
+                        Icon(
+                          Icons.circle,
+                          color: (game.questions.length > i
+                              ? Colors.green
+                              : game.questions.length == i
+                                  ? Colors.orange
+                                  : Colors.grey),
+                          size: 18,
+                        ),
+                    ],
+                  ),
+                  const Spacer(flex: 3),
+                  Text(
+                    "${gain >= 0 ? '+' : ''}$gain\$",
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: gain > 0 ? Colors.green : Colors.red,
+                        ),
+                    textAlign: TextAlign.right,
+                  ),
+                ]),
+              ),
+            ],
+          ));
+    }));
   }
 }
