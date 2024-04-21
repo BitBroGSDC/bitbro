@@ -3,7 +3,7 @@ class Question {
     this.updates,
     required this.question,
     required this.answer,
-    this.gain,
+    required this.gain,
     this.summary,
   });
   final String question;
@@ -13,5 +13,5 @@ class Question {
   final Map<String, int>? updates;
 
   // diff from last day
-  final int? gain;
+  final int gain;
 }
