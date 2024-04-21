@@ -9,7 +9,7 @@ void main() {
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light, // For Android (dark icons)
     statusBarBrightness:
-        Brightness.light, // For iOS (dark icons) // transparent status bar
+        Brightness.dark, // For iOS (dark icons) // transparent status bar
   ));
   runApp(const BitBroApp());
 }

@@ -9,14 +9,5 @@ The [App Name] application is a fintech mobile application designed to make lear
   The game flow revolves around questions generated and presented by the LLM, aiming to challenge the players with diverse scenarios. Each player has 24 hours to       respond. Afterward, the Game Master assesses all responses and generates a summary of the round for each player. Additionally, the LLM provides score updates,        reflecting the difference in "money" won or lost.
 - Each Game is composed of 7 rounds (therefore it lasts a week). Each players starts with a balance of 1000€.
 - Your actions affect everyone else and everyone else's actions can affect you. The LLM, when computing the round result, takes into considerations all actions and     evaluates them togheter. There can be compund effects which make the game even more exciting!
-- Clean and seamless UI 
+- Clean and seamless UI, featuring a line chart scoreboard that delivers a visually pleasing experience.
 
-
-
-## Caratteristiche Principali
-
-- 
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
