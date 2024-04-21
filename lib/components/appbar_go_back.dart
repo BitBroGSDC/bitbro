@@ -18,13 +18,6 @@ class AppBarGoBack extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        // Status bar color
-        statusBarColor: Colors.transparent,
-        // Status bar brightness (optional)
-        statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-        statusBarBrightness: Brightness.light, // For iOS (dark icons)
-      ),
       backgroundColor: Theme.of(context).primaryColor,
       title: Text(title, style: Theme.of(context).textTheme.titleLarge),
       leading: IconButton(

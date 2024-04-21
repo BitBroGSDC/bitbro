@@ -113,7 +113,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   _markTopicCompleted(MarkTopicCompleted event, Emitter<AppState> emit) {
-    Topic? newTopic = state.selectedTopic?.copyWith(isCompleted: true);
+    Topic? oldTopic = state.selectedTopic;
+
+    if (oldTopic == null) return;
+
+    Topic newTopic = oldTopic.copyWith(isCompleted: !oldTopic.isCompleted);
 
     emit(state.copyWith(selectedTopic: newTopic));
 
