@@ -2,6 +2,7 @@ import 'package:bitbro/pages/course_choose_page.dart';
 import 'package:bitbro/pages/course_topics.dart';
 import 'package:bitbro/pages/dashboard_page.dart';
 import 'package:bitbro/pages/games_page.dart';
+import 'package:bitbro/pages/question_page.dart';
 import 'package:bitbro/pages/scoreboard.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -57,6 +58,22 @@ final GoRouter router = GoRouter(
             path: '/course_choose',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const CourseChoosePage(),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return child;
+                }),
+          ),
+          GoRoute(
+            path: '/courses',
+            pageBuilder: (context, state) => CustomTransitionPage(
+                child: const CoursesPage(),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return child;
+                }),
+          ),
+          GoRoute(
+            path: '/question',
+            pageBuilder: (context, state) => CustomTransitionPage(
+                child: const QuestionPage(),
                 transitionsBuilder: (context, animation, secondaryAnimation, child) {
                   return child;
                 }),

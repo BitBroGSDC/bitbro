@@ -33,6 +33,7 @@ class Button extends StatelessWidget {
     this.alignItemsInCenter = false,
     this.isEnabled = true,
     this.borderRadius,
+    this.width,
   })  : assert(
           //se non è espandibile non puoi centrare gli elementi
           !(isExpandable == false && alignItemsInCenter == true),
@@ -63,6 +64,7 @@ class Button extends StatelessWidget {
   final TextStyle? _textStyle;
   final Color _iconsColor;
   final double _borderRadius;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,7 @@ class Button extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Container(
+        width: width,
         height: height,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../components/UserTextField.dart';
+
 class CourseChoosePage extends StatefulWidget {
   const CourseChoosePage({super.key});
 
@@ -18,7 +20,8 @@ class _CourseChoosePageState extends State<CourseChoosePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Tell us more...", style: Theme.of(context).textTheme.titleLarge),
+        title: Text("Tell us more...",
+            style: Theme.of(context).textTheme.titleLarge),
         leading: IconButton(
           icon: const Icon(Ionicons.arrow_back, color: Colors.white),
           onPressed: () {
@@ -44,7 +47,7 @@ class _CourseChoosePageState extends State<CourseChoosePage> {
             // white rounded textfield
             // q: how i set it multiline?
             // a: set maxLines to null
-            UserTextField(),
+            const UserTextField(),
             const Expanded(
               child: SingleChildScrollView(
                 child: Column(children: [
@@ -68,60 +71,13 @@ class _CourseChoosePageState extends State<CourseChoosePage> {
                 ),
                 child: TextButton(
                   onPressed: () => print('a'),
-                  child: Text('SEE AL COURSES', style: Theme.of(context).textTheme.titleMedium),
+                  child: Text('SEE AL COURSES',
+                      style: Theme.of(context).textTheme.titleMedium),
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class UserTextField extends StatelessWidget {
-  const UserTextField({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 20),
-      height: 150,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Stack(
-        children: [
-          const TextField(
-            maxLines: null,
-            decoration: InputDecoration(
-              hintText: 'I\'m interested in...',
-              border: InputBorder.none,
-            ),
-            // come aggiungo un bottone interno?
-          ),
-          Positioned(
-            right: 0,
-            bottom: 5,
-            child: TextButton(
-              onPressed: () => print('a'),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
-                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsetsDirectional.all(15)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              child: const Text('SUBMIT', style: TextStyle(color: Colors.white)),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -149,9 +105,12 @@ class CourseTile extends StatelessWidget {
         ),
         color: griginoSfondo,
         child: ListTile(
-          title: Text(courseName, style: const TextStyle(color: bluScuro, fontSize: 16)),
-          subtitle: Text(courseDescription, style: const TextStyle(color: bluScuro, fontSize: 12)),
-          trailing: Text('$complection%', style: const TextStyle(color: bluScuro, fontSize: 16)),
+          title: Text(courseName,
+              style: const TextStyle(color: bluScuro, fontSize: 16)),
+          subtitle: Text(courseDescription,
+              style: const TextStyle(color: bluScuro, fontSize: 12)),
+          trailing: Text('$complection%',
+              style: const TextStyle(color: bluScuro, fontSize: 16)),
         ),
       ),
     );

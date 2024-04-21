@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: const AppBarGoBack(
         title: "Partita della Vita",
+        icon: Icon(Ionicons.chevron_down_circle, color: Colors.white),
       ),
       backgroundColor: bluScuro,
       body: Stack(children: [
@@ -103,6 +104,7 @@ class _HomePageState extends State<HomePage> {
                       LearnSomething(
                         course: course,
                       ),
+                      const SizedBox(height: 24),
                     ],
                   );
                 },
