@@ -158,7 +158,7 @@ class TopicTile extends StatelessWidget {
                 child: Text(
                   topicName,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     backgroundColor: bianco,
                     color: bluScuro,
                   ),
