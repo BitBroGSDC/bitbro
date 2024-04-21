@@ -29,11 +29,8 @@ class AppBarGoBack extends StatelessWidget implements PreferredSizeWidget {
       actions: icon != null
           ? [
               Container(
-                margin: const EdgeInsets.only(right: 32),
-                child: IconButton(
-                  icon: icon!,
-                  onPressed: onIconPressed, // TODO : implementare switch
-                ),
+                margin: const EdgeInsets.only(right: 0),
+                child: IconButton(icon: icon!, onPressed: onIconPressed),
               ),
             ]
           : null,

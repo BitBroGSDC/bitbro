@@ -31,8 +31,11 @@ class SummaryPage extends StatelessWidget {
                   ),
                   height: 180,
                   child: Center(
-                      child: Text(question?.question ?? "",
-                          style: text16Bianco500, textAlign: TextAlign.center)),
+                      child: Text(
+                    question?.question ?? "",
+                    style: text16Bianco500,
+                    textAlign: TextAlign.justify,
+                  )),
                 )),
             DraggableScrollableSheet(
               initialChildSize: 0.7,
