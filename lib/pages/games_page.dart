@@ -1,5 +1,5 @@
 import 'package:bitbro/classes/game_data.dart';
-import 'package:bitbro/components/AppBarGoBack.dart';
+import 'package:bitbro/components/appbar_go_back.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 

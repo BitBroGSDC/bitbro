@@ -38,10 +38,17 @@ class CurrentDayQuestion extends StatelessWidget {
               color: griginoSfondo,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(q!.question, textAlign: TextAlign.start),
+                Expanded(
+                  child: Text(
+                    q!.question,
+                    textAlign: TextAlign.start,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 Container(
                   alignment: Alignment.centerRight,
                   child: SvgPicture.asset(

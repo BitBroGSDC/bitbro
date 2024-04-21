@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../classes/courses/course.dart';
-import '../components/AppBarGoBack.dart';
+import '../components/appbar_go_back.dart';
 import '../components/home/CurrentDayQuestion.dart';
 import '../components/button.dart';
 import '../components/home/learn_something.dart';

@@ -1,8 +1,8 @@
 import 'package:bitbro/bloc/app_bloc.dart';
 import 'package:bitbro/classes/question.dart';
-import 'package:bitbro/components/AppBarGoBack.dart';
-import 'package:bitbro/components/Container2Elements.dart';
-import 'package:bitbro/components/UserTextField.dart';
+import 'package:bitbro/components/appbar_go_back.dart';
+import 'package:bitbro/components/container_2_elements.dart';
+import 'package:bitbro/components/user_text_field.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:bitbro/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,10 @@ class QuestionPage extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Center(
-                    child: Text(q.question, style: text18Bianco500),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(q.question, style: text16Bianco500, textAlign: TextAlign.center),
+                    ),
                   ),
                 ),
                 Expanded(

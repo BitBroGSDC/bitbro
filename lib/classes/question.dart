@@ -10,7 +10,7 @@ class Question {
   final String? answer;
   final String? summary;
 
-  final Map<String, int>? updates;
+  final Map<String, double>? updates;
 
   // diff from last day
   final int gain;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../components/UserTextField.dart';
+import '../components/user_text_field.dart';
 
 class CourseChoosePage extends StatefulWidget {
   const CourseChoosePage({super.key});
