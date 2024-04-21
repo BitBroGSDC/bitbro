@@ -1,22 +1,10 @@
+import 'package:bitbro/bloc/app_bloc.dart';
 import 'package:bitbro/utils/colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
-
-// TODO: rimuovere questo e aggiungere la vera implementazione di Diego
-class TempScore {
-  final String name;
-  final List<double> datapoints;
-  TempScore(this.name, this.datapoints);
-}
-
-// TODO: dati presi da un Bloc? questi sono per test
-final List<TempScore> tempScores = [
-  TempScore('Tizio', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-  TempScore('Sempronio', [5, 6, 7, 8, 9, 10, 9, 8, 7, 6]),
-  TempScore('Caio', [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]),
-];
 
 class ScoreboardPoint extends StatelessWidget {
   final int position;
@@ -149,28 +137,32 @@ class Scoreboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        title:
-            Text("Scoreboard", style: Theme.of(context).textTheme.titleLarge),
-        leading: IconButton(
-          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
-          onPressed: () {
-            context.pop();
-          },
+    return BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+      final scb = state.currGame!.scoreboard.entries.toList();
+
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          title:
+              Text("Scoreboard", style: Theme.of(context).textTheme.titleLarge),
+          leading: IconButton(
+            icon: const Icon(Ionicons.arrow_back, color: Colors.white),
+            onPressed: () {
+              context.pop();
+            },
+          ),
         ),
-      ),
-      backgroundColor: bluScuro,
-      body: ListView.builder(
-        itemCount: tempScores.length,
-        itemBuilder: (context, index) => ScoreboardPoint(
-          position: index + 1,
-          name: tempScores[index].name,
-          datapoints: tempScores[index].datapoints,
-          isYou: index == 1,
+        backgroundColor: bluScuro,
+        body: ListView.builder(
+          itemCount: scb.length,
+          itemBuilder: (context, index) => ScoreboardPoint(
+            position: index + 1,
+            name: scb[index].key,
+            datapoints: scb[index].value,
+            isYou: scb[index].key == state.currGame!.userName,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
