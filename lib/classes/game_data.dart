@@ -7,7 +7,7 @@ class GameData {
   final String userName;
   final String topic;
 
-  final Map<String, List<int>> scoreboard;
+  final Map<String, List<double>> scoreboard;
 
   final Map<int, Question> questions;
 }
@@ -33,6 +33,7 @@ List<GameData> active_games = [
           'User 2': 0,
           'User 3': 0,
         },
+        summary: "Summary"
       ),
       2: Question(
         question: 'Question 2',

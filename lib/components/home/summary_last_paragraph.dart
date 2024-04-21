@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../utils/styles.dart';
+import '../Container2Elements.dart';
 
 class SummaryLastDay extends StatelessWidget {
   const SummaryLastDay({super.key, this.q});
@@ -73,24 +74,14 @@ class SummaryLastDay extends StatelessWidget {
                           parsedGain = "";
                         }
 
+                        TextStyle style =
+                            isPositive ? text14Green500 : text14Red500;
+
                         parsedGain += q!.gain!.toStringAsFixed(2);
-                        return Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          height: 48,
-                          decoration: const BoxDecoration(
-                            color: bluScuro,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text("Result", style: text16Bianco500),
-                              Text(parsedGain, style: isPositive ?  text14Green500 : text14Red500),
-                            ],
-                          ),
-                        );
+                        return Container2Elements(
+                            firstText: "Result",
+                            text: parsedGain,
+                            style: style);
                       })
                     : const SizedBox.shrink()
               ],

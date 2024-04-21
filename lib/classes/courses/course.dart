@@ -20,6 +20,7 @@ class Course {
 
 List<Course> courses = [
   Course(
+    activeGames: active_games,
     title: 'Introduzione agli Investimenti',
     description:
         'Questo corso fornisce una panoramica introduttiva sugli investimenti finanziari, coprendo tipologie di investimento, rischi, strategie di allocazione e analisi di mercato. È ideale per chi desidera acquisire una comprensione di base degli investimenti per iniziare a pianificare in modo consapevole il proprio futuro finanziario.',
