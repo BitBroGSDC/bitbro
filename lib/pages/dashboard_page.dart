@@ -15,6 +15,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  late bool flagSwitch;
   late DraggableScrollableController controller;
 
   @override
@@ -22,6 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
 
     controller = DraggableScrollableController();
+    flagSwitch = true;
   }
 
   @override
@@ -40,6 +42,16 @@ class _DashboardPageState extends State<DashboardPage> {
         backgroundColor: bluScuro,
         foregroundColor: bianco,
         actions: [
+          TextButton(
+              onPressed: () => {
+                    setState(() {
+                      flagSwitch = !flagSwitch;
+                    })
+                  },
+              child: Text(flagSwitch ? '🇬🇧' : '🇮🇹',
+                  style: const TextStyle(
+                    fontSize: 28,
+                  ))),
           IconButton(
             icon: const Icon(Icons.settings, color: bianco),
             onPressed: () {
@@ -123,7 +135,8 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                      margin:
+                          const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                       width: double.infinity,
                       child: TextButton(
                         onPressed: () {
