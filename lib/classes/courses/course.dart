@@ -45,35 +45,35 @@ List<Course> courses = [
     completion: 60,
     pastGames: past_games,
     activeGames: active_games,
-    title: 'Introduzione agli Investimenti',
+    title: 'Introduction to Investments',
     description:
-        'Questo corso fornisce una panoramica introduttiva sugli investimenti finanziari, coprendo tipologie di investimento, rischi, strategie di allocazione e analisi di mercato. È ideale per chi desidera acquisire una comprensione di base degli investimenti per iniziare a pianificare in modo consapevole il proprio futuro finanziario.',
+        "This course provides an introductory overview of financial investments, covering investment types, risks, allocation strategies, and market analysis. It is ideal for those looking to gain a basic understanding of investments to start planning their financial future consciously.",
     topics: [
       Topic(
           isCompleted: true,
-          title: 'Principi fondamentali degli investimenti',
+          title: "Fundamentals of Investments",
           description:
-              'Questo capitolo offre una panoramica essenziale sui concetti di base degli investimenti finanziari, inclusi rischio e rendimento, diversificazione e obiettivi finanziari.',
+              "This chapter provides an essential overview of the basic concepts of financial investments, including risk and return, diversification, and financial goals.",
           paragraphs: [
             CustomParagraph(
                 text:
-                    "Valutazione di Rischio e Rendimento:\nIn questo capitolo esamineremo il principio fondamentale della valutazione di rischio e rendimento negli investimenti. Il rischio e il rendimento sono interconnessi e comprendere come valutare e gestire entrambi è essenziale per gli investitori. Mentre il rendimento potenziale può essere allettante, è importante valutare attentamente il livello di rischio associato a un investimento. Questo ci permette di bilanciare le nostre aspettative di guadagno con la nostra tolleranza al rischio, assicurando una gestione prudente del nostro portafoglio."),
+                    "Risk and Return Assessment:\nIn this chapter, we will examine the fundamental principle of risk and return assessment in investments. Risk and return are interconnected, and understanding how to assess and manage both is essential for investors. While potential return may be enticing, it's important to carefully evaluate the level of risk associated with an investment. This allows us to balance our earning expectations with our risk tolerance, ensuring prudent portfolio management."),
             CustomParagraph(
                 text:
-                    "Importanza della Diversificazione:\nIl principio della diversificazione è fondamentale per la gestione di un portafoglio di investimento solido e resistente. In questo capitolo esploreremo come la diversificazione può aiutarci a mitigare il rischio complessivo del nostro portafoglio, distribuendo il capitale tra diverse categorie di attività. Questo ci permette di ridurre l'impatto negativo di eventi specifici su un singolo investimento e aumenta la nostra resilienza complessiva alle fluttuazioni del mercato. Comprendere e applicare correttamente la diversificazione ci aiuta a costruire portafogli più stabili nel lungo termine, in grado di sopportare le sfide e capitalizzare sulle opportunità di investimento."),
+                    "Importance of Diversification:\nThe principle of diversification is crucial for managing a robust and resilient investment portfolio. In this chapter, we will explore how diversification can help us mitigate the overall risk of our portfolio by spreading capital across different asset classes. This allows us to reduce the negative impact of specific events on a single investment and increases our overall resilience to market fluctuations. Understanding and properly applying diversification helps us build more stable long-term portfolios, capable of weathering challenges and capitalizing on investment opportunities."),
           ],
           level: 'easy'),
       Topic(
-          title: 'Tipi di investimenti e rischi associati',
+          title: "Types of Investments and Associated Risks",
           description:
-              'Questo capitolo fornisce una panoramica esaustiva dei vari tipi di investimenti disponibili sul mercato finanziario e dei rischi specifici associati a ciascuna categoria di investimento.',
+              "This chapter provides a comprehensive overview of the various types of investments available in the financial market and the specific risks associated with each investment category.",
           paragraphs: [
             CustomParagraph(
                 text:
-                    "Esplorazione dei Tipi di Investimenti:\nIn questo capitolo, esamineremo i diversi tipi di investimenti disponibili e i rischi associati ad essi. Esistono molte opzioni di investimento, ognuna con caratteristiche uniche e potenziali rendimenti e rischi. Comprendere queste opzioni è fondamentale per scegliere gli investimenti più adatti alle nostre esigenze e obiettivi finanziari. Esploreremo investimenti tradizionali come azioni e obbligazioni, così come opzioni più innovative come le criptovalute e gli investimenti immobiliari."),
+                    "Exploring Types of Investments:\nIn this chapter, we will examine the various types of investments available and the risks associated with them. There are many investment options, each with unique characteristics and potential returns and risks. Understanding these options is crucial for choosing investments that best suit our financial needs and goals. We will explore traditional investments such as stocks and bonds, as well as more innovative options like cryptocurrencies and real estate investments."),
             CustomParagraph(
                 text:
-                    "Analisi dei Rischi Associati:\nOgni tipo di investimento porta con sé rischi specifici che devono essere compresi e gestiti attentamente dagli investitori. In questo capitolo, esamineremo i rischi associati a diversi tipi di investimenti e come valutarli in modo accurato. I rischi possono includere la volatilità del mercato, l'instabilità economica, il rischio di credito e molti altri fattori. Capire questi rischi e implementare strategie per mitigarli è essenziale per proteggere e far crescere il nostro patrimonio nel lungo termine."),
+                    "Analysis of Associated Risks:\nEvery type of investment carries specific risks that must be understood and carefully managed by investors. In this chapter, we will examine the risks associated with different types of investments and how to accurately assess them. Risks may include market volatility, economic instability, credit risk, and many other factors. Understanding these risks and implementing strategies to mitigate them is essential for protecting and growing our wealth in the long term."),
           ],
           level: 'medium'),
     ],
@@ -81,27 +81,27 @@ List<Course> courses = [
   Course(
     activeGames: active_games,
     completion: 40,
-    title: 'Come gestire il debito',
+    title: "How to Manage Debt",
     description:
-        'Questo corso fornisce una guida pratica su come gestire il debito in modo efficace, aiutando gli individui a comprendere i vari tipi di debito, sviluppare strategie per ridurlo e pianificare una gestione finanziaria sana per il futuro.',
+        "This course provides a practical guide on effectively managing debt, helping individuals understand the various types of debt, develop strategies to reduce it, and plan for healthy financial management for the future.",
     topics: [
       Topic(
-          title: 'Analisi dei Tipi di Debito',
+          title: "Analysis of Types of Debt",
           description:
-              'Questo capitolo esplora i diversi tipi di debito che gli individui possono affrontare, dalla comprensione dei prestiti studenteschi alle implicazioni delle carte di credito, passando per i finanziamenti auto e le complessità delle ipoteche.',
+              "This chapter explores the different types of debt individuals may encounter, from understanding student loans to the implications of credit cards, to auto financing, and the complexities of mortgages.",
           paragraphs: [
             CustomParagraph(
                 text:
-                    "Analisi dei Tipi di Debito: Prestiti Studenteschi, Carte di Credito e Finanziamenti Auto:\nEsplorare i diversi tipi di debito è come navigare attraverso un labirinto finanziario, ognuno con i suoi percorsi intricati e implicazioni uniche. I prestiti studenteschi rappresentano spesso il primo assaggio di debito per molti giovani, con termini e condizioni che possono essere un mistero per i neofiti finanziari. Passando poi alle carte di credito, ci imbattiamo in un mondo di convenienza e pericolo, dove la linea sottile tra l'uso responsabile e l'accumulo incontrollato di debito può portare a conseguenze finanziarie durature. E mentre i finanziamenti auto possono offrire la libertà di movimento, anche qui si nascondono insidie finanziarie, con interessi e condizioni che possono far lievitare i costi oltre le aspettative. In questo viaggio attraverso i tipi di debito, si aprono gli occhi sulle sfide e le opportunità finanziarie che ogni categoria porta con sé, preparando gli individui a navigare in modo più sicuro e consapevole nel mondo del credito."),
+                    "Analysis of Types of Debt: Student Loans, Credit Cards, and Auto Financing:\nExploring the various types of debt is like navigating through a financial maze, each with its intricate pathways and unique implications. Student loans often represent the first taste of debt for many young individuals, with terms and conditions that can be a mystery to financial newcomers. Moving on to credit cards, we encounter a world of convenience and danger, where the thin line between responsible use and unchecked debt accumulation can lead to lasting financial consequences. And while auto financing may offer the freedom of movement, financial pitfalls also lurk here, with interest rates and conditions that can drive costs beyond expectations.\nIn this journey through the types of debt, eyes are opened to the financial challenges and opportunities that each category brings, preparing individuals to navigate the world of credit more safely and consciously."),
             CustomParagraph(
                 text:
                     "Analisi dei Tipi di Debito: Le Implicazioni Finanziarie delle Ipoteche:\nLe ipoteche rappresentano uno dei punti salienti nel viaggio finanziario di molti individui, simboleggiando spesso un traguardo di stabilità e successo. Tuttavia, dietro questa soglia si nascondono intricati dettagli finanziari che richiedono una comprensione attenta. Dalla scelta tra tassi fissi e variabili alle implicazioni finanziarie di un acconto più alto o più basso, le decisioni relative alle ipoteche possono avere un impatto significativo sulle finanze a lungo termine. Capire le diverse opzioni di finanziamento immobiliare e navigare attraverso il processo di acquisto di una casa richiede una pianificazione diligente e una consapevolezza delle implicazioni finanziarie. Questo capitolo guida gli individui attraverso le complessità delle ipoteche, fornendo una mappa per navigare con successo le acque turbolente del mercato "),
           ],
           level: 'easy'),
       Topic(
-          title: 'Strategie per la Gestione del Debito Personale',
+          title: "Strategies for Personal Debt Management",
           description:
-              'Questo capitolo fornisce una guida dettagliata su strategie pratiche per gestire il debito personale in modo responsabile, includendo la negoziazione con i creditori e il consolidamento del debito.',
+              "This chapter provides a detailed guide on practical strategies for responsibly managing personal debt, including negotiating with creditors and debt consolidation.",
           paragraphs: [
             CustomParagraph(
                 text:
@@ -115,9 +115,9 @@ List<Course> courses = [
   ),
   Course(
     activeGames: active_games,
-    title: 'Trading di Criptovalute',
+    title: "Cryptocurrency Trading",
     description:
-        'Questo corso fornisce una introduzione pratica al trading di criptovalute, coprendo principi fondamentali, analisi di mercato e gestione dei rischi. È ideale per chi vuole iniziare a negoziare criptovalute con sicurezza.',
+        "This course provides a practical introduction to cryptocurrency trading, covering fundamental principles, market analysis, and risk management. It is ideal for those who want to start trading cryptocurrencies with confidence.",
     topics: [
       Topic(
           title: 'provola',
@@ -131,9 +131,9 @@ List<Course> courses = [
   ),
   Course(
     activeGames: active_games,
-    title: "Fondamenti dell'Investimento Azionario",
+    title: "Fundamentals of Stock Investment",
     description:
-        'Questo corso offre una panoramica completa degli investimenti in azioni, coprendo concetti fondamentali, strategie di selezione e analisi di titoli.',
+        "This course provides a comprehensive overview of stock investments, covering fundamental concepts, selection strategies, and securities analysis.",
     topics: [
       Topic(
           title: 'provola',
@@ -147,9 +147,9 @@ List<Course> courses = [
   ),
   Course(
     activeGames: active_games,
-    title: 'Analisi Tecnica per il Mercato Azionario',
+    title: "Technical Analysis for the Stock Market",
     description:
-        "Un corso avanzato che approfondisce l'analisi tecnica nel trading azionario, esaminando indicatori di mercato, pattern di prezzo e strategie di trading basate su dati storici.",
+        "An advanced course delving into technical analysis in stock trading, examining market indicators, price patterns, and trading strategies based on historical data.",
     topics: [
       Topic(
           title: 'provola',

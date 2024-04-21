@@ -21,9 +21,9 @@ class GameData {
 List<GameData> active_games = [
   GameData(
     gameId: '1',
-    gameName: 'Partita degli Investimenti',
+    gameName: "Investment Match",
     userName: 'Diego',
-    topic: 'Principi fondamentali degli investimenti',
+    topic: "Fundamentals of Investments",
     scoreboard: {
       'Tommaso': [45, 200],
       'Diego': [1000, 3000],
@@ -32,11 +32,11 @@ List<GameData> active_games = [
     questions: {
       1: Question(
         question:
-            'Hai un budget limitato e vuoi investire in un settore emergente. Opzione 1: criptovalute. Opzione 2: energia rinnovabile. Opzione 3: biotecnologie. Quali investimenti sceglieresti e perché?',
+            "You have a limited budget and want to invest in an emerging sector. Option 1: cryptocurrencies. Option 2: renewable energy. Option 3: biotechnology. Which investments would you choose and why?",
         answer:
-            "Sceglierei L\'energia rinnovabile perchè è un settore in crescita con prospettive di lungo termine promettenti. Penso che investire in aziende che operano in questo settore potrebbe offrire stabilità e potenziale crescita a lungo termine.",
+            "I would choose renewable energy because it is a growing sector with promising long-term prospects. I believe investing in companies operating in this sector could offer stability and long-term growth potential.",
         summary:
-            'La scelta dell\'energia rinnovabile come settore di investimento dipende da vari fattori, inclusi i tuoi obiettivi finanziari, il tuo livello di rischio e la tua prospettiva a lungo termine. Tuttavia, l\'energia rinnovabile è generalmente considerata un settore con prospettive di crescita promettenti per diverse ragioni: Tendenze di mercato: C\'è una crescente domanda di energia pulita e sostenibile, spinta dalle preoccupazioni ambientali e dalle politiche a livello globale volte a ridurre le emissioni di carbonio. Questo crea opportunità di crescita nel settore dell\'energia rinnovabile. Innovazione tecnologica: Le continue innovazioni nel campo delle tecnologie rinnovabili stanno rendendo queste fonti energetiche sempre più competitive rispetto alle fonti tradizionali di energia. Ciò contribuisce a sostenere la crescita nel settore. Sostenibilità a lungo termine: Poiché le risorse rinnovabili come il sole e il vento sono virtualmente illimitate e non emettono gas serra durante la produzione di energia, l\'energia rinnovabile offre un modello di business sostenibile a lungo termine. Tuttavia, è importante notare che nessun investimento è privo di rischi. L\'energia rinnovabile può essere influenzata da fattori come cambiamenti normativi, fluttuazioni dei prezzi delle materie prime e concorrenza nel settore. Prima di prendere una decisione di investimento, è consigliabile condurre una ricerca approfondita e consultare un consulente finanziario per valutare se l\'energia rinnovabile sia adatta al tuo profilo di rischio e ai tuoi obiettivi finanziari.',
+            "The choice of renewable energy as an investment sector depends on various factors, including your financial goals, risk tolerance, and long-term perspective. However, renewable energy is generally considered a sector with promising growth prospects for several reasons:\nMarket Trends: There is a growing demand for clean and sustainable energy, driven by environmental concerns and global policies aimed at reducing carbon emissions. This creates growth opportunities in the renewable energy sector.\nTechnological Innovation: Continuous innovations in renewable technologies are making these energy sources increasingly competitive compared to traditional sources of energy. This contributes to supporting growth in the sector.\nLong-term Sustainability: Since renewable resources like the sun and wind are virtually limitless and do not emit greenhouse gases during energy production, renewable energy offers a sustainable long-term business model.\nHowever, it is important to note that no investment is without risks. Renewable energy can be influenced by factors such as regulatory changes, fluctuations in commodity prices, and competition in the industry. Before making an investment decision, it is advisable to conduct thorough research and consult a financial advisor to assess whether renewable energy is suitable for your risk profile and financial goals.",
         gain: 2000,
         updates: {
           'Tommaso': 155,
@@ -46,16 +46,16 @@ List<GameData> active_games = [
       ),
       2: Question(
         question:
-            'Hai investito in un\'azienda tecnologica coinvolta in una controversia legale sulle presunte violazioni del diritto d\'autore, causando una temporanea caduta del prezzo delle azioni. Cosa vorresti fare?',
+            "You have invested in a technology company involved in a legal controversy over alleged copyright violations, causing a temporary drop in the stock price. What would you like to do?",
         answer: 'Answer 2',
       ),
     },
   ),
   GameData(
     gameId: '2',
-    gameName: 'Partita sul Rischio',
+    gameName: "Risk Game",
     userName: 'Diego',
-    topic: 'Tipi di investimenti e rischi associati',
+    topic: "Types of Investments and Associated Risks",
     scoreboard: {
       'Tommaso': [0, 0],
       'Diego': [0, 0],
@@ -99,9 +99,9 @@ List<GameData> active_games = [
 List<GameData> past_games = [
   GameData(
     gameId: '3',
-    gameName: 'Partita sulle Strategie di Investimento',
+    gameName: "Investment Strategy Match",
     userName: 'Sara',
-    topic: 'Concetti avanzati di investimento',
+    topic: "Advanced Investment Concepts",
     scoreboard: {
       'Tommaso': [1, 2, 3, 4, 5, 6, 7],
       'Diego': [1, 2, 3, 4, 5, 6, 7],
