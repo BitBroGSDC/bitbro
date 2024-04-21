@@ -1,5 +1,7 @@
 import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ionicons/ionicons.dart';
 
 class CoursesPage extends StatefulWidget {
   const CoursesPage({super.key});
@@ -18,15 +20,22 @@ class _CoursesPageState extends State<CoursesPage> {
         backgroundColor: Theme.of(context).primaryColor,
         title:
             Text("All Courses", style: Theme.of(context).textTheme.titleLarge),
+        leading: IconButton(
+          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
+          onPressed: () {
+            context.go('/');
+          },
+        ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.only(top: 24, bottom: 12, left: 12, right: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 16),
+              padding: const EdgeInsets.only(
+                  left: 24, right: 24, top: 16, bottom: 0),
               decoration: const BoxDecoration(
                 color: bianco,
                 borderRadius: BorderRadius.only(
@@ -34,30 +43,37 @@ class _CoursesPageState extends State<CoursesPage> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: const SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CourseTile(
-                      courseName: 'Course 1',
-                      courseDescription: 'Course 1 description',
-                      complection: 50,
-                    ),
-                    CourseTile(
-                      courseName: 'Course 2',
-                      courseDescription: 'Course 2 description',
-                      complection: 50,
-                    ),
-                    CourseTile(
-                      courseName: 'Course 3',
-                      courseDescription: 'Course 3 description',
-                      complection: 50,
-                    ),
-                    CourseTile(
-                      courseName: 'Course 4',
-                      courseDescription: 'Course 4 description',
-                      complection: 50,
-                    ),
-                  ],
+              child: const SingleChildScrollView( //todo lui deve essere espanso
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      CourseTile(
+                        courseName: 'Course 1',
+                        courseDescription: 'Course 1 description',
+                        complection: 50,
+                      ),
+                      CourseTile(
+                        courseName: 'Course 2',
+                        courseDescription: 'Course 2 description',
+                        complection: 20,
+                      ),
+                      CourseTile(
+                        courseName: 'Course 3',
+                        courseDescription: 'Course 3 description',
+                        complection: 0,
+                      ),
+                      CourseTile(
+                        courseName: 'Course 4',
+                        courseDescription: 'Course 4 description',
+                        complection: 30,
+                      ),
+                      CourseTile(
+                        courseName: 'Course 5',
+                        courseDescription: 'Course 5 description',
+                        complection: 70,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

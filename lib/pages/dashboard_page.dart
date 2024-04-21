@@ -43,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 0, 0, 50),
-              child: Text('Sara Spagnoli', style: Theme.of(context).textTheme.titleSmall),
+              child: Text('Sara Spagnoli', style: Theme.of(context).textTheme.titleSmall?.copyWith(color: bianco)),
             ),
             const UserStats(),
           ],

@@ -2,6 +2,7 @@ import 'package:bitbro/pages/course_choose_page.dart';
 import 'package:bitbro/pages/courses_page.dart';
 import 'package:bitbro/pages/dashboard_page.dart';
 import 'package:bitbro/pages/games_page.dart';
+import 'package:bitbro/pages/question_page.dart';
 import 'package:bitbro/pages/scoreboard.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,8 @@ final GoRouter router = GoRouter(
         builder: (context, state, child) {
           return MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => AppBloc()..add(const AppInit())),
+              BlocProvider(
+                  create: (context) => AppBloc()..add(const AppInit())),
             ],
             child: child,
           );
@@ -26,7 +28,8 @@ final GoRouter router = GoRouter(
             path: '/',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const HomePage(),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
           ),
@@ -34,7 +37,8 @@ final GoRouter router = GoRouter(
             path: '/dashboard',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const DashboardPage(),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
           ),
@@ -42,7 +46,8 @@ final GoRouter router = GoRouter(
             path: '/games',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const GamesPage(),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
           ),
@@ -50,14 +55,16 @@ final GoRouter router = GoRouter(
               path: '/scoreboard',
               pageBuilder: (context, state) => CustomTransitionPage(
                   child: const Scoreboard(),
-                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
                     return child;
                   })),
           GoRoute(
             path: '/course_choose',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const CourseChoosePage(),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
           ),
@@ -65,10 +72,20 @@ final GoRouter router = GoRouter(
             path: '/courses',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const CoursesPage(),
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
-          )
-        ])
+          ),
+          GoRoute(
+            path: '/question',
+            pageBuilder: (context, state) => CustomTransitionPage(
+                child: const QuestionPage(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return child;
+                }),
+          ),
+        ]),
   ],
 );

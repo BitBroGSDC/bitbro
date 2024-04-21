@@ -51,13 +51,19 @@ class LearnSomething extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(topic.title, style: text18Bianco500),
-                        Text(
-                          topic.level,
-                          style: text14Green500,
+                        Expanded(
+                            child: Text(topic.title, style: text18Bianco500)),
+                        Container(
+                          alignment: Alignment.centerRight,
+                          constraints: const BoxConstraints(minWidth: 50),
+                          child: Text(
+                            topic.level,
+                            style: text14Green500,
+                          ),
                         )
                       ],
                     ),
+                    const SizedBox(height: 10),
                     Text(topic.description, style: text14Bianco300),
                   ],
                 ),
@@ -65,7 +71,7 @@ class LearnSomething extends StatelessWidget {
             );
           },
           itemCount: course?.topics.length,
-        )
+        ),
       ],
     );
   }

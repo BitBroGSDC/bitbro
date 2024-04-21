@@ -1,77 +1,27 @@
+import 'package:bitbro/classes/game_data.dart';
+import 'package:bitbro/components/AppBarGoBack.dart';
+import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:ionicons/ionicons.dart';
 
-// game structure:
-// - name
-// - arguments
-// - level
-// -gain
+import '../components/bordered_button.dart';
+
 const int TOTAL_LEVELS = 7;
-
-class Game {
-  final String name;
-  final String arguments;
-  final int level;
-  final double gain;
-
-  Game({
-    required this.name,
-    required this.arguments,
-    required this.level,
-    required this.gain,
-  });
-}
 
 class GamesPage extends StatefulWidget {
   const GamesPage({super.key});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   @override
   State<GamesPage> createState() => _GamesPageState();
 }
 
 class _GamesPageState extends State<GamesPage> {
-  final List<Game> games = [
-    Game(name: 'Game 1', arguments: 'Arguments 1', level: 3, gain: 500),
-    Game(name: 'Game 2', arguments: 'Arguments 2', level: 2, gain: 6000),
-    Game(name: 'Game 3', arguments: 'Arguments 3', level: 1, gain: 0),
-    Game(name: 'Game 4', arguments: 'Arguments 4', level: 6, gain: -200),
-    Game(name: 'Game 5', arguments: 'Arguments 5', level: 5, gain: 500),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    /*
-      bar: back button and title
-      list of active games
-      list of finished games
-
-      each game is represented with a button that navigates to the game. It shows:
-        the game name, the game arguments, and the game status with circles
-     */
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Games", style: Theme.of(context).textTheme.titleLarge),
-        leading: IconButton(
-          icon: const Icon(Ionicons.arrow_back, color: Colors.white),
-          onPressed: () {
-            context.go('/');
-          },
-        ),
+      appBar: const AppBarGoBack(
+        title: 'Games',
       ),
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: bluScuro,
       body: Flex(
         direction: Axis.vertical,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -91,9 +41,9 @@ class _GamesPageState extends State<GamesPage> {
                   ListView.builder(
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: games.length,
+                    itemCount: active_games.length,
                     itemBuilder: (context, index) {
-                      return GameListItem(game: games[index]);
+                      return GameListItem(game: active_games[index]);
                     },
                   ),
                   const SizedBox(height: 20),
@@ -104,9 +54,9 @@ class _GamesPageState extends State<GamesPage> {
                   ListView.builder(
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: games.length,
+                    itemCount: past_games.length,
                     itemBuilder: (context, index) {
-                      return GameListItem(game: games[index]);
+                      return GameListItem(game: past_games[index]);
                     },
                   ),
                 ],
@@ -115,19 +65,8 @@ class _GamesPageState extends State<GamesPage> {
           ),
           Container(
             color: Theme.of(context).primaryColor,
-            padding: const EdgeInsets.fromLTRB(100, 30, 100, 30),
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.white),
-              ),
-              child: TextButton(
-                onPressed: () => print('sss'),
-                child: Text('NEW GAME',
-                    style: Theme.of(context).textTheme.titleMedium),
-              ),
-            ),
+            padding: const EdgeInsets.fromLTRB(80, 30, 80, 30),
+            child: const BorderedButton(textButton: 'SEE ALL GAMES'),
           ),
         ],
       ),
@@ -136,12 +75,15 @@ class _GamesPageState extends State<GamesPage> {
 }
 
 class GameListItem extends StatelessWidget {
-  final Game game;
+  final GameData game;
+  int gain = 0;
 
-  const GameListItem({
-    super.key,
-    required this.game,
-  });
+  // definisci il costruttore in modo da ottenere game e calolcare il gain
+  GameListItem({required this.game}) {
+    if (game.questions.isNotEmpty) {
+      gain = game.questions[game.questions.length - 1]!.gain;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,16 +92,15 @@ class GameListItem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              title: Text(game.name,
-                  style: Theme.of(context).textTheme.bodyMedium),
+              title: Text(game.gameName, style: Theme.of(context).textTheme.bodyMedium),
               tileColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              subtitle: Text(game.arguments,
-                  style: Theme.of(context).textTheme.bodySmall),
+              subtitle: Text(game.topic, style: Theme.of(context).textTheme.bodySmall),
               onTap: () {
-                context.go('/game/${game.name}');
+                // context.go('/game/${game.name}');
+                // TODO set that game as active and go to the game page
               },
               trailing: const Icon(Icons.arrow_forward),
             ),
@@ -174,9 +115,9 @@ class GameListItem extends StatelessWidget {
                     for (int i = 1; i < TOTAL_LEVELS; i++)
                       Icon(
                         Icons.circle,
-                        color: (game.level > i
+                        color: (game.questions.length > i
                             ? Colors.green
-                            : game.level == i
+                            : game.questions.length == i
                                 ? Colors.orange
                                 : Colors.grey),
                         size: 18,
@@ -185,9 +126,9 @@ class GameListItem extends StatelessWidget {
                 ),
                 const Spacer(flex: 3),
                 Text(
-                  "${game.gain >= 0 ? '+' : ''}${game.gain}\$",
+                  "${gain >= 0 ? '+' : ''}${gain}\$",
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: game.gain > 0 ? Colors.green : Colors.red,
+                        color: gain > 0 ? Colors.green : Colors.red,
                       ),
                   textAlign: TextAlign.right,
                 ),
