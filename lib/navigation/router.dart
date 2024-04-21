@@ -1,4 +1,5 @@
 import 'package:bitbro/pages/course_choose_page.dart';
+import 'package:bitbro/pages/courses_page.dart';
 import 'package:bitbro/pages/dashboard_page.dart';
 import 'package:bitbro/pages/games_page.dart';
 import 'package:bitbro/pages/scoreboard.dart';
@@ -9,7 +10,7 @@ import '../bloc/app_bloc.dart';
 import '../pages/home_page.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/course_choose',
+  initialLocation: '/courses',
   routes: [
     ShellRoute(
         builder: (context, state, child) {
@@ -56,6 +57,14 @@ final GoRouter router = GoRouter(
             path: '/course_choose',
             pageBuilder: (context, state) => CustomTransitionPage(
                 child: const CourseChoosePage(),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return child;
+                }),
+          ),
+          GoRoute(
+            path: '/courses',
+            pageBuilder: (context, state) => CustomTransitionPage(
+                child: const CoursesPage(),
                 transitionsBuilder: (context, animation, secondaryAnimation, child) {
                   return child;
                 }),
