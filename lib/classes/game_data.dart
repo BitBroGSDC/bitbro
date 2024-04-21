@@ -25,16 +25,16 @@ List<GameData> active_games = [
     userName: 'Diego',
     topic: 'Principi fondamentali degli investimenti',
     scoreboard: {
-      'Tommaso': [45, 200],
-      'Diego': [1000, 3000],
-      'Sara': [2500, 1000],
+      'Tommaso': [0, 0, 0, 10, 87, 244, 311],
+      'Diego': [240, 20, 142, 171, 4, 256, 231],
+      'Sara': [0, 229, 261, 277, 87, 0, 157],
     },
     questions: {
       1: Question(
         question:
             'Hai un budget limitato e vuoi investire in un settore emergente. Opzione 1: criptovalute. Opzione 2: energia rinnovabile. Opzione 3: biotecnologie. Quali investimenti sceglieresti e perché?',
         answer:
-            "Sceglierei L\'energia rinnovabile perchè è un settore in crescita con prospettive di lungo termine promettenti. Penso che investire in aziende che operano in questo settore potrebbe offrire stabilità e potenziale crescita a lungo termine.",
+            "Sceglierei L'energia rinnovabile perchè è un settore in crescita con prospettive di lungo termine promettenti. Penso che investire in aziende che operano in questo settore potrebbe offrire stabilità e potenziale crescita a lungo termine.",
         summary:
             'La scelta dell\'energia rinnovabile come settore di investimento dipende da vari fattori, inclusi i tuoi obiettivi finanziari, il tuo livello di rischio e la tua prospettiva a lungo termine. Tuttavia, l\'energia rinnovabile è generalmente considerata un settore con prospettive di crescita promettenti per diverse ragioni: Tendenze di mercato: C\'è una crescente domanda di energia pulita e sostenibile, spinta dalle preoccupazioni ambientali e dalle politiche a livello globale volte a ridurre le emissioni di carbonio. Questo crea opportunità di crescita nel settore dell\'energia rinnovabile. Innovazione tecnologica: Le continue innovazioni nel campo delle tecnologie rinnovabili stanno rendendo queste fonti energetiche sempre più competitive rispetto alle fonti tradizionali di energia. Ciò contribuisce a sostenere la crescita nel settore. Sostenibilità a lungo termine: Poiché le risorse rinnovabili come il sole e il vento sono virtualmente illimitate e non emettono gas serra durante la produzione di energia, l\'energia rinnovabile offre un modello di business sostenibile a lungo termine. Tuttavia, è importante notare che nessun investimento è privo di rischi. L\'energia rinnovabile può essere influenzata da fattori come cambiamenti normativi, fluttuazioni dei prezzi delle materie prime e concorrenza nel settore. Prima di prendere una decisione di investimento, è consigliabile condurre una ricerca approfondita e consultare un consulente finanziario per valutare se l\'energia rinnovabile sia adatta al tuo profilo di rischio e ai tuoi obiettivi finanziari.',
         gain: 2000,

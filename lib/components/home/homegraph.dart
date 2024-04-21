@@ -105,7 +105,7 @@ class HomeGraph extends StatelessWidget {
                   sideTitles: SideTitles(
                     showTitles: true,
                     getTitlesWidget: (value, meta) =>
-                        Text(value.toString().split('.')[0], style: titleStyle),
+                        Text(value.toStringAsFixed(0), style: titleStyle),
                   ),
                 ),
                 rightTitles: const AxisTitles(
@@ -116,9 +116,11 @@ class HomeGraph extends StatelessWidget {
                 ),
                 leftTitles: AxisTitles(
                   sideTitles: SideTitles(
+                    reservedSize: 40,
+                    interval: 80,
                     showTitles: true,
                     getTitlesWidget: (value, meta) =>
-                        Text(value.toString().split('.')[0], style: titleStyle),
+                        Text(value.toStringAsFixed(0), style: titleStyle),
                   ),
                 ),
               ),
