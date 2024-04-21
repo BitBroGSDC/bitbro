@@ -38,6 +38,16 @@ class Course {
       pastGames: pastGames ?? this.pastGames,
     );
   }
+
+  double get completedTopicsPercentage {
+    int completedTopics = 0;
+    for (var topic in topics) {
+      if (topic.isCompleted) {
+        completedTopics++;
+      }
+    }
+    return (completedTopics / topics.length);
+  }
 }
 
 List<Course> courses = [

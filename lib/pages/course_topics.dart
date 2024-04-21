@@ -4,6 +4,7 @@ import 'package:bitbro/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../bloc/app_bloc.dart';
 import '../classes/courses/course.dart';
 import '../components/appbar_go_back.dart';
@@ -45,28 +46,13 @@ class _CourseTopicsPageState extends State<CourseTopicsPage> {
                 );
               }
 
-              return Expanded(
-                child: ListView.builder(
-                  itemCount: course.topics.length,
-                  itemBuilder: (context, index) {
-                    if (index == course.topics.length - 1) {
-                      return TopicTile(
-                        topicName: course.topics[index].title,
-                        isCompleted: course.topics[index].isCompleted,
-                        onTap: () {
-                          context
-                              .read<AppBloc>()
-                              .add(SelectTopic(course.topics[index]));
-                          GoRouter.of(context).push('/topic_details');
-                        },
-                      );
-                    }
-
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TopicTile(
+              return Column(children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: course.topics.length,
+                    itemBuilder: (context, index) {
+                      if (index == course.topics.length - 1) {
+                        return TopicTile(
                           topicName: course.topics[index].title,
                           isCompleted: course.topics[index].isCompleted,
                           onTap: () {
@@ -75,22 +61,54 @@ class _CourseTopicsPageState extends State<CourseTopicsPage> {
                                 .add(SelectTopic(course.topics[index]));
                             GoRouter.of(context).push('/topic_details');
                           },
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Transform.rotate(
-                            angle: 3.14 / 2,
-                            child: Icon(
-                              Icons.linear_scale,
-                              color: bianco,
+                        );
+                      }
+
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TopicTile(
+                            topicName: course.topics[index].title,
+                            isCompleted: course.topics[index].isCompleted,
+                            onTap: () {
+                              context
+                                  .read<AppBloc>()
+                                  .add(SelectTopic(course.topics[index]));
+                              GoRouter.of(context).push('/topic_details');
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Transform.rotate(
+                              angle: 3.14 / 2,
+                              child: Icon(
+                                Icons.linear_scale,
+                                color: bianco,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                        ],
+                      );
+                    },
+                  ),
                 ),
-              );
+                Row(children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 32, right: 4, left: 16),
+                      child: LinearPercentIndicator(
+                        lineHeight: 14.0,
+                        percent: course.completedTopicsPercentage,
+                        backgroundColor: bianco,
+                        barRadius: const Radius.circular(10),
+                        progressColor: verdeBrillante,
+                      ),
+                    ),
+                  ),
+                ]),
+              ]);
             },
           ),
         ));
